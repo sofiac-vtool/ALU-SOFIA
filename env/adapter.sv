@@ -14,7 +14,7 @@ class adapter extends uvm_reg_adapter;
 
       apb_transaction pkt = apb_transaction::type_id::create("pkt"); 
       pkt.write =(rw.kind == UVM_WRITE) ? 1:0;
-      pkt.op =(rw.kind == UVM_WRITE) ? 1:0;
+      pkt.op =(rw.kind == UVM_WRITE) ? write: read;
       pkt.addr = rw.addr;
       pkt.data =rw.data;
       `uvm_info("adapter", $sformatf("reg2bus addr=0x%0h data=0x%0h kind=%s", pkt.addr, pkt.data, rw.kind.name), UVM_DEBUG)
@@ -28,8 +28,8 @@ class adapter extends uvm_reg_adapter;
       `uvm_fatal ("adapter", "failed to cast bus_item to pkt ")
       end
 
-      //rw.kind = pkt.write ? UVM_WRITE : UVM_READ;
-      rw.kind = pkt.op ? UVM_WRITE : UVM_READ;
+      rw.kind = pkt.write ? UVM_WRITE : UVM_READ;
+    //  rw.kind = pkt.op ? UVM_WRITE : UVM_READ;
       rw.addr = pkt.addr;
       rw.data = pkt.data;
       rw.status = UVM_IS_OK; //APB does not support slave response

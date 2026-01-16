@@ -15,5 +15,3 @@ class fifo_virtual_sequencer extends uvm_sequencer;
    endfunction
 
 endclass
-
-

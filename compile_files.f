@@ -1,6 +1,8 @@
+
 +incdir+/space/users/$(USER)/alu
 +incdir+/space/users/$(USER)/alu/alu_verif/agent
 +incdir+/space/users/$(USER)/alu/alu_verif/env
+//+incdir+/space/users/$(USER)/alu/alu_verif/sequences
 +incdir+/space/users/$(USER)/alu/alu_verif/tests
 //design
 +incdir+/space/users/$(USER)/alu/rtl/ALU   
@@ -12,8 +14,9 @@
 -sv /space/users/$(USER)/alu/alu_verif/agent/alu_pkg.sv
 -sv /space/users/$(USER)/alu/alu_verif/agent/defines.sv
 -sv /space/users/$(USER)/alu/alu_verif/agent/interface.sv
+-sv /space/users/$(USER)/alu/alu_verif/env/env_pkg.sv
+//-sv /space/users/$(USER)/alu/alu_verif/sequences/seq_pkg.sv
 -sv /space/users/$(USER)/alu/alu_verif/tests/alu_test_pkg.sv
-
 -sv /space/users/$(USER)/alu/alu_verif/top_tb.sv
 
 

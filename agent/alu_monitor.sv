@@ -49,7 +49,7 @@ class alu_monitor extends uvm_monitor;
    endtask
 
    task wr_rd_task();
-      forever
+   /*   forever
       begin
          wait (vintf.psel==1 && vintf.penable==1 && vintf.ready ==1);
          @(negedge vintf.clk);
@@ -66,6 +66,73 @@ class alu_monitor extends uvm_monitor;
          `uvm_info("MONITOR", $sformatf("DATA READ WRITE addr:%0d data:%0d slverr:%0d",tr_item.addr ,tr_item.data,tr_item.slv_err), UVM_HIGH);
          wait (vintf.penable == 0 && vintf.psel ==0);
          ap_monitor.write (tr_item);
-      end
+      end*/
+	forever begin
+      	wait (vintf.psel==1 && vintf.penable==1);
+//my_trans -> apb_transaction, απο που ήταν το my_trans?
+		tr_item =apb_transaction::type_id::create("tr_item", this);
+
+		tr_item.wait_states = 0;
+
+        /* @(negedge vintf.clk);
+         if(vintf.pwrite == 0) begin
+            tr_item.write = 1'b0;
+            tr_item.op = read;
+            tr_item.data = vintf.prdata;
+         end
+         else begin
+            tr_item.write = 1'b1;
+ 	 		tr_item.op = write;
+            tr_item.data = vintf.pwdata;
+         end
+         tr_item.addr = vintf.paddr;
+         tr_item.slv_err = vintf.slv_err;
+         if(!vintf.ready)begin
+                tr_item.wait_states += 1;
+         end
+         while (vintf.ready == 0) begin
+			@(posedge vintf.clk);
+			tr_item.wait_states += 1;
+	 end
+
+         `uvm_info("MONITOR", $sformatf("DATA READ WRITE addr:%0d data:%0d rdata:%d slverr:%0d wait_states:%0d",tr_item.addr ,tr_item.data, vintf.prdata, tr_item.slv_err, tr_item.wait_states), UVM_HIGH);
+         wait (vintf.penable == 0 && vintf.psel ==0);
+         ap_monitor.write (tr_item);
+      end */
+
+         // Count wait states FIRST
+fork 
+begin
+    @(posedge vintf.clk);
+    while (!vintf.ready) begin
+        @(posedge vintf.clk);
+        tr_item.wait_states++;
+    end
+end
+begin wait(vintf.ready ==1)
+    // Now transfer is COMPLETE
+    @(negedge vintf.clk);
+
+    tr_item.addr    = vintf.paddr;
+    tr_item.slv_err = vintf.slv_err;
+
+    if (vintf.pwrite == 0) begin
+        tr_item.write = 0;
+        tr_item.op    = read;
+        tr_item.data  = vintf.prdata;   // ? VALID HERE
+    end
+    else begin
+        tr_item.write = 1;
+        tr_item.op    = write;
+        tr_item.data  = vintf.pwdata;
+    end
+
+end
+join
+     `uvm_info("MONITOR", $sformatf("DATA READ WRITE addr:%0d data:%0d rdata:%d slverr:%0d wait_states:%0d",tr_item.addr ,tr_item.data, vintf.prdata, tr_item.slv_err, tr_item.wait_states), UVM_HIGH);
+     wait (vintf.penable == 0 && vintf.psel ==0);
+     ap_monitor.write (tr_item);
+end
+
    endtask
 endclass

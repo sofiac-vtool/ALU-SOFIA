@@ -23,16 +23,18 @@ class alu_driver extends uvm_driver #(apb_transaction);
    task run_phase(uvm_phase phase);
 
       forever begin
-         #1ns;
+        
+         init_signals();
+         `uvm_info(get_name(), "after the initialization of the signals", UVM_HIGH)
+         //#1ns;
          //reset
-         if(vintf.presetn == 0) begin
+        // if(vintf.presetn == 0) 
+        begin
             @(posedge vintf.presetn);
             `uvm_info(get_name(), "out of RESET", UVM_NONE)
          end
          `uvm_info(get_name(), "got through RESET", UVM_NONE)
 
-         init_signals();
-         `uvm_info(get_name(), "after the initialization of the signals", UVM_HIGH)
             fork
                do_drive();
                reset();
@@ -50,10 +52,13 @@ class alu_driver extends uvm_driver #(apb_transaction);
       vintf.pwrite  <= 0;
       vintf.psel    <= 0;
       vintf.penable <= 0;
+   
    endtask
 
    task do_drive();
       forever begin
+      // if (!vintf.presetn) @(vintf.presetn); 
+      //  seq_item_port.get_next_item(req);
          seq_item_port.get_next_item (data_obj);
          `uvm_info("DRIVER", $sformatf("data_obj.op:%0d ",data_obj.op), UVM_HIGH)
 
@@ -89,7 +94,7 @@ class alu_driver extends uvm_driver #(apb_transaction);
 
        if (vintf.ready == 0) begin
          `uvm_info(get_name(), "inside vintf.ready if", UVM_DEBUG)
-         @(posedge vintf.ready );
+         @(posedge vintf.ready);
          `uvm_info("DRIVER", $sformatf("vintf.ready:%0d ",vintf.ready), UVM_NONE)
       end
 
@@ -123,13 +128,13 @@ class alu_driver extends uvm_driver #(apb_transaction);
       vintf.psel=0;
       vintf.penable <= 0;
       `uvm_info("DRIVER", $sformatf("vintf.prdata: %0h ",vintf.prdata), UVM_NONE)
-      data_obj.data = vintf.prdata;
-      data_obj.slv_err = vintf.slv_err;
+      data_obj.data <= vintf.prdata;
+      data_obj.slv_err <= vintf.slv_err;
    endtask
 
 
    task reset();
-      @(negedge vintf.rst_n);
+      @(negedge vintf.presetn);
       `uvm_info("DRIVER", $sformatf("Reset detected "), UVM_NONE)
 
    endtask //reset

@@ -1,29 +1,24 @@
+`timescale 1ns/1ps
+
 `ifndef ALU_TEST_PKG_SV
 `define ALU_TEST_PKG_SV
 
 package alu_test_pkg;
-
 `include "uvm_macros.svh"
+//	import uvm_pkg::*;
+	import env_pkg::*;
+//	import seq_pkg::*;
 
-import uvm_pkg::*;
-
-import alu_pkg::*;
-
-
-
-`include "alu_testbase.sv"
-`include "alu_base_test.sv"
-
-
-`include "alu_empty_fifo_out_test.sv"
-`include "alu_write_to_read_reg.sv"
-`include "alu_read_from_write_test.sv"
-`include "alu_full_fifo_in_test.sv"
-`include "alu_reset_test.sv"
-`include "apb_address_test.sv"
-
+//	`include "alu_seq_lib.sv" 
+   `include "base_test.sv"
+   `include "sanity/operation_test.sv"
+   `include "sanity/no_start_operation_test.sv"
+   `include "sanity/monitor_register_test.sv"
+   `include "functional/add_waitstate_test.sv"
+   `include "functional/no_start_exec_test.sv"
+   `include "functional/sequence_order_test.sv"
+   `include "edge_case_test.sv"
 
 
 endpackage
-
 `endif

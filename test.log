@@ -1,0 +1,1294 @@
+xrun(64): 22.03-s002: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	22.03-s002: Started on Jan 15, 2026 at 15:09:43 UTC
+xrun
+	-timescale 1ns/1ns
+	-sysv
+	-access +rw
+	-uvm
+	-gui
+	-covoverwrite
+	-coverage ALL
+	-dutinst top_tb/dut/alu_top_module
+	-seed RANDOM
+	-f compile_files.f
+		+incdir+/space/users/sofiac/alu
+		+incdir+/space/users/sofiac/alu/alu_verif/agent
+		+incdir+/space/users/sofiac/alu/alu_verif/env
+		+incdir+/space/users/sofiac/alu/alu_verif/tests
+		+incdir+/space/users/sofiac/alu/rtl/ALU
+		+incdir+/space/users/sofiac/alu/rtl/ALU/APB_CSR
+		+incdir+/space/users/sofiac/alu/rtl/ALU/Common
+		+incdir+/space/users/sofiac/alu/rtl/ALU/FIFO
+		-sv
+		/space/users/sofiac/alu/alu_verif/agent/alu_pkg.sv
+		-sv
+		/space/users/sofiac/alu/alu_verif/agent/defines.sv
+		-sv
+		/space/users/sofiac/alu/alu_verif/agent/interface.sv
+		-sv
+		/space/users/sofiac/alu/alu_verif/env/env_pkg.sv
+		-sv
+		/space/users/sofiac/alu/alu_verif/tests/alu_test_pkg.sv
+		-sv
+		/space/users/sofiac/alu/alu_verif/top_tb.sv
+		-v /space/users/sofiac/alu/rtl/ALU/APB_CSR/APB_CSR_top_module.v
+		-v /space/users/sofiac/alu/rtl/ALU/APB_CSR/cs_registers.v
+		-v /space/users/sofiac/alu/rtl/ALU/APB_CSR/csr_control.v
+		-v /space/users/sofiac/alu/rtl/ALU/Common/d_ff_async_en.v
+		-v /space/users/sofiac/alu/rtl/ALU/Common/d_ff_async.v
+		-v /space/users/sofiac/alu/rtl/ALU/Common/posedge_detector.v
+		-v /space/users/sofiac/alu/rtl/ALU/FIFO/fifo_synch.v
+		-v /space/users/sofiac/alu/rtl/ALU/FIFO/flags.v
+		-v /space/users/sofiac/alu/rtl/ALU/FIFO/memory.v
+		-v /space/users/sofiac/alu/rtl/ALU/FIFO/read_address.v
+		-v /space/users/sofiac/alu/rtl/ALU/FIFO/write_address.v
+		-v /space/users/sofiac/alu/rtl/ALU/add_sub.v
+		-v /space/users/sofiac/alu/rtl/ALU/adder.v
+		-v /space/users/sofiac/alu/rtl/ALU/alu_top_module.v
+		-v /space/users/sofiac/alu/rtl/ALU/cla_1_bit.v
+		-v /space/users/sofiac/alu/rtl/ALU/in_alu_control_unit.v
+		-v /space/users/sofiac/alu/rtl/ALU/mul_fsm.v
+		-v /space/users/sofiac/alu/rtl/ALU/out_alu_control_unit.v
+		-v /space/users/sofiac/alu/rtl/ALU/right_shift_register.v
+	-uvmhome CDNS-1.2
+	+UVM_TESTNAME=edge_case_test
+	-clean
+	-l test.log
+	top_tb.sv
+	+DUMPNAME=test.vcd
+	+UVM_VERBOSITY=UVM_HIGH
+
+   User defined plus("+") options:
+	+DUMPNAME=test.vcd
+	+UVM_VERBOSITY=UVM_HIGH
+
+xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2
+file: /space/users/sofiac/alu/alu_verif/agent/alu_pkg.sv
+   uvm_active_passive_enum  is_active = 1;
+                                        |
+xmvlog: *W,ENUMERR (/space/users/sofiac/alu/alu_verif/agent/fifo_config.sv,7|40): This assignment is a violation of SystemVerilog strong typing rules for enumeration datatypes.
+	package worklib.alu_pkg:sv
+		errors: 0, warnings: 1
+file: /space/users/sofiac/alu/alu_verif/agent/defines.sv
+file: /space/users/sofiac/alu/alu_verif/agent/interface.sv
+	interface worklib.interfc:sv
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/alu_verif/env/env_pkg.sv
+	package worklib.env_pkg:sv
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/alu_verif/tests/alu_test_pkg.sv
+function sanity_operation_test::new(string name, uvm_component parent);
+                                              |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/sanity/operation_test.sv,20|46): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function sanity_operation_test::new(string name, uvm_component parent);
+                                                                    |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/sanity/operation_test.sv,20|68): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function sanity_no_start_operation_test::new(string name, uvm_component parent);
+                                                       |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/sanity/no_start_operation_test.sv,20|55): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function sanity_no_start_operation_test::new(string name, uvm_component parent);
+                                                                             |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/sanity/no_start_operation_test.sv,20|77): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function sanity_monitor_register_test::new(string name, uvm_component parent);
+                                                     |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/sanity/monitor_register_test.sv,20|53): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function sanity_monitor_register_test::new(string name, uvm_component parent);
+                                                                           |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/sanity/monitor_register_test.sv,20|75): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function functional_add_waitstate_test::new(string name, uvm_component parent);
+                                                      |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/functional/add_waitstate_test.sv,20|54): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function functional_add_waitstate_test::new(string name, uvm_component parent);
+                                                                            |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/functional/add_waitstate_test.sv,20|76): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function functional_no_start_exec_test::new(string name, uvm_component parent);
+                                                      |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/functional/no_start_exec_test.sv,20|54): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function functional_no_start_exec_test::new(string name, uvm_component parent);
+                                                                            |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/functional/no_start_exec_test.sv,20|76): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function functional_sequence_order_test::new(string name, uvm_component parent);
+                                                       |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/functional/sequence_order_test.sv,20|55): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function functional_sequence_order_test::new(string name, uvm_component parent);
+                                                                             |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/functional/sequence_order_test.sv,20|77): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function edge_case_test::new(string name, uvm_component parent);
+                                       |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/edge_case_test.sv,20|39): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+function edge_case_test::new(string name, uvm_component parent);
+                                                             |
+xmvlog: *N,PMBMDVN (/space/users/sofiac/alu/alu_verif/tests/edge_case_test.sv,20|61): Out of block declaration missing default argument value. The default value from the prototype declaration is used [8.24 (IEEE 1800-2017)].
+	package worklib.alu_test_pkg:sv
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/alu_verif/top_tb.sv
+	module worklib.top_tb:sv
+		errors: 0, warnings: 0
+file: top_tb.sv
+module top_tb;
+            |
+xmvlog: *W,RECOME (top_tb.sv,3|12): recompiling design unit worklib.top_tb:sv.
+	First compiled from line 3 of /space/users/sofiac/alu/alu_verif/top_tb.sv.
+file: /space/users/sofiac/alu/rtl/ALU/APB_CSR/APB_CSR_top_module.v
+file: /space/users/sofiac/alu/rtl/ALU/APB_CSR/cs_registers.v
+file: /space/users/sofiac/alu/rtl/ALU/APB_CSR/csr_control.v
+file: /space/users/sofiac/alu/rtl/ALU/Common/d_ff_async_en.v
+file: /space/users/sofiac/alu/rtl/ALU/Common/d_ff_async.v
+file: /space/users/sofiac/alu/rtl/ALU/Common/posedge_detector.v
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/fifo_synch.v
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/flags.v
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/memory.v
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/read_address.v
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/write_address.v
+file: /space/users/sofiac/alu/rtl/ALU/add_sub.v
+file: /space/users/sofiac/alu/rtl/ALU/adder.v
+file: /space/users/sofiac/alu/rtl/ALU/alu_top_module.v
+	module alu_top_module.alu_top_module:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/cla_1_bit.v
+file: /space/users/sofiac/alu/rtl/ALU/in_alu_control_unit.v
+	module in_alu_control_unit.in_alu_control_unit:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/mul_fsm.v
+	module mul_fsm.mul_fsm:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/out_alu_control_unit.v
+	module out_alu_control_unit.out_alu_control_unit:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/right_shift_register.v
+	module right_shift_register.right_shift_register:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/APB_CSR/APB_CSR_top_module.v
+	module APB_CSR_top_module.APB_CSR_top_module:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/APB_CSR/cs_registers.v
+	module cs_registers.cs_registers:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/APB_CSR/csr_control.v
+	module csr_control.csr_control:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/Common/d_ff_async_en.v
+	module d_ff_async_en.d_ff_async_en:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/Common/posedge_detector.v
+	module posedge_detector.posedge_detector:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/fifo_synch.v
+	module fifo_synch.fifo_synch:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/flags.v
+	module flags.flags:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/memory.v
+	module memory.memory:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/read_address.v
+	module read_address.read_address:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/FIFO/write_address.v
+	module write_address.write_address:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/add_sub.v
+	module add_sub.add_sub:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/adder.v
+	module adder.adder:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/cla_1_bit.v
+	module cla_1_bit.cla_1_bit:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/Common/d_ff_async.v
+	module d_ff_async.d_ff_async:v
+		errors: 0, warnings: 0
+file: /space/users/sofiac/alu/rtl/ALU/add_sub.v
+xmvlog: *W,SPDUSD: Include directory /space/users/sofiac/alu given but not used.
+xmvlog: *W,SPDUSD: Include directory /space/users/sofiac/alu/rtl/ALU given but not used.
+xmvlog: *W,SPDUSD: Include directory /space/users/sofiac/alu/rtl/ALU/APB_CSR given but not used.
+xmvlog: *W,SPDUSD: Include directory /space/users/sofiac/alu/rtl/ALU/Common given but not used.
+xmvlog: *W,SPDUSD: Include directory /space/users/sofiac/alu/rtl/ALU/FIFO given but not used.
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 5
+		Caching library 'APB_CSR_top_module' ....... Done
+		Caching library 'add_sub' ....... Done
+		Caching library 'adder' ....... Done
+		Caching library 'alu_top_module' ....... Done
+		Caching library 'cla_1_bit' ....... Done
+		Caching library 'cs_registers' ....... Done
+		Caching library 'csr_control' ....... Done
+		Caching library 'd_ff_async' ....... Done
+		Caching library 'd_ff_async_en' ....... Done
+		Caching library 'fifo_synch' ....... Done
+		Caching library 'flags' ....... Done
+		Caching library 'in_alu_control_unit' ....... Done
+		Caching library 'memory' ....... Done
+		Caching library 'mul_fsm' ....... Done
+		Caching library 'out_alu_control_unit' ....... Done
+		Caching library 'posedge_detector' ....... Done
+		Caching library 'read_address' ....... Done
+		Caching library 'right_shift_register' ....... Done
+		Caching library 'worklib' ....... Done
+		Caching library 'write_address' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		$unit_0x32635420
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		alu_pkg
+		env_pkg
+		alu_test_pkg
+		top_tb
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xmelab: *W,COVDNC: Coverage inside Verilog library cells and VHDL vital cells is not enabled by default; if needed, use the set_libcell_scoring command at elaboration.
+
+	Extracting FSMs for coverage:
+		worklib.top_tb
+	Total FSMs extracted = 0
+      .addr(paddr),
+                |
+xmelab: *W,CUVMPW (./top_tb.sv,52|16): port sizes differ in port connection(5/3) for the instance(top_tb) .
+      .wdata(pwdata),
+                  |
+xmelab: *W,CUVMPW (./top_tb.sv,53|18): port sizes differ in port connection(16/32) for the instance(top_tb) .
+             .d(rdata),
+                    |
+xmelab: *W,CUVMPW (../rtl/ALU/APB_CSR/csr_control.v,252|20): port sizes differ in port connection(32/25) for the instance(top_tb.dut.csr_inst.csr_control_inst) .
+   uvm_active_passive_enum  is_active = 1;
+                                        |
+xmelab: *W,ENUMERR (./agent/fifo_config.sv,7|40): This assignment is a violation of SystemVerilog strong typing rules for enumeration datatypes.
+	Building instance overlay tables: .................... Done
+	Enabling instrumentation for coverage types: block expression FSM toggle functional
+xmelab: *W,COVDCL: By default expression coverage is scored only for Verilog logical operators (|| and &&) and VHDL logical operators (OR, AND, NOR, and NAND), and is scored only in condition expressions. To score coverage for other operators and for expressions in other statements, use the "set_expr_coverable_operators" and "set_expr_coverable_statements" coverage configuration file commands with suitable options at elaboration.
+	Generating native compiled code:
+		add_sub.add_sub:v <0x439d953e>
+			streams:   2, words:   745
+		add_sub.add_sub:v <0x68de971f>
+			streams:   2, words:   856
+		worklib.top_tb:sv <0x716e6973>
+			streams: 1574, words: 2036131
+		worklib.cdns_uvm_pkg:sv <0x149f4435>
+			streams: 249, words: 393728
+		worklib.cdns_uvmapi:svp <0x4d76ce32>
+			streams:  27, words: 29972
+		worklib.cdns_assert2uvm_pkg:sv <0x5a3656ec>
+			streams:   3, words:  1818
+		worklib.uvm_pkg:sv <0x62266cbc>
+			streams: 5943, words: 9078853
+		alu_top_module.alu_top_module:v <0x4bb75f73>
+			streams:   3, words:   597
+		APB_CSR_top_module.APB_CSR_top_module:v <0x3b5228a2>
+			streams:   1, words:   183
+		csr_control.csr_control:v <0x17c702c6>
+			streams:  15, words:  5301
+		d_ff_async_en.d_ff_async_en:v <0x64167b4a>
+			streams:   2, words:   615
+		d_ff_async_en.d_ff_async_en:v <0x5cde775d>
+			streams:   2, words:   621
+		d_ff_async_en.d_ff_async_en:v <0x763f6932>
+			streams:   2, words:   630
+		d_ff_async_en.d_ff_async_en:v <0x1ff3953f>
+			streams:   2, words:   720
+		d_ff_async_en.d_ff_async_en:v <0x4e2fc8db>
+			streams:   2, words:   630
+		d_ff_async_en.d_ff_async_en:v <0x3dc611ef>
+			streams:   2, words:   841
+		d_ff_async_en.d_ff_async_en:v <0x5a941bcc>
+			streams:   2, words:   648
+		d_ff_async_en.d_ff_async_en:v <0x0fe4923b>
+			streams:   2, words:   615
+		d_ff_async_en.d_ff_async_en:v <0x0ae6ae48>
+			streams:   2, words:   746
+		d_ff_async_en.d_ff_async_en:v <0x3fcfb68e>
+			streams:   2, words:   615
+		d_ff_async_en.d_ff_async_en:v <0x668c77c4>
+			streams:   2, words:   621
+		d_ff_async_en.d_ff_async_en:v <0x74742e44>
+			streams:   2, words:   630
+		d_ff_async_en.d_ff_async_en:v <0x1cdedb74>
+			streams:   2, words:   632
+		d_ff_async_en.d_ff_async_en:v <0x60e586de>
+			streams:   2, words:   632
+		d_ff_async_en.d_ff_async_en:v <0x57757727>
+			streams:   2, words:   632
+		posedge_detector.posedge_detector:v <0x30953c0e>
+			streams:   1, words:   123
+		cs_registers.cs_registers:v <0x2aea52fb>
+			streams:   7, words:  2372
+		fifo_synch.fifo_synch:v <0x603937f4>
+			streams:   0, words:     0
+		fifo_synch.fifo_synch:v <0x7dc68b34>
+			streams:   0, words:     0
+		write_address.write_address:v <0x48ce7603>
+			streams:   2, words:   464
+		read_address.read_address:v <0x5a9f9ce7>
+			streams:   2, words:   467
+		flags.flags:v <0x10ebe36c>
+			streams:   3, words:   997
+		memory.memory:v <0x238c1565>
+			streams:   6, words:  1613
+		memory.memory:v <0x77bf974f>
+			streams:   6, words:  1835
+		in_alu_control_unit.in_alu_control_unit:v <0x1e1c8a95>
+			streams:   9, words:  2946
+		adder.adder:v <0x69b00fdb>
+			streams:  10, words:  5851
+		cla_1_bit.cla_1_bit:v <0x0a91e36c>
+			streams:   0, words:     0
+		d_ff_async.d_ff_async:v <0x09fd110d>
+			streams:   2, words:   464
+		mul_fsm.mul_fsm:v <0x01274847>
+			streams:  22, words: 13861
+		right_shift_register.right_shift_register:v <0x7c9fd914>
+			streams:   2, words:   828
+		right_shift_register.right_shift_register:v <0x4338a40f>
+			streams:   2, words:   683
+		out_alu_control_unit.out_alu_control_unit:v <0x54205579>
+			streams:   3, words:   902
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                       Instances  Unique
+		Modules:                     103      20
+		Interfaces:                    1       1
+		Verilog packages:              7       7
+		Registers:                 18467   12210
+		Scalar wires:                336       -
+		Expanded wires:               53       5
+		Vectored wires:               64       -
+		Named events:                  4      12
+		Always blocks:                65      13
+		Initial blocks:              413     192
+		Parallel blocks:              30      31
+		Cont. assignments:            39      70
+		Pseudo assignments:           88      58
+		Assertions:                    3       3
+		Compilation units:             1       1
+		SV Class declarations:       258     374
+		SV Class specializations:    510     510
+		Simulation timescale:        1ps
+	Writing initial simulation snapshot: worklib.top_tb:sv
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+SVSEED set randomly from command line: 583054437
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /tools/cdnc/xcelium/current/tools/xcelium/files/xmsimrc
+xcelium> source /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (22.03-s002)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test edge_case_test...
+WARNING:        SYSTF       DBPROPT
+         For the requested database probe some object was optimized.
+        ./top_tb.sv, 90: $recordvars(top_tb)
+UVM_INFO /space/users/sofiac/alu/alu_verif/tests/base_test.sv(28) @ 0: uvm_test_top [edge_case_test] Building and configuring the environment ...
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_spell_chkr.svh(123) @ 0: reporter [UVM/CONFIGDB/SPELLCHK] include_coverage not located, did you mean env_cfg|fifo_config|interfc
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_spell_chkr.svh(123) @ 0: reporter [UVM/CONFIGDB/SPELLCHK] include_coverage not located, did you mean env_cfg|fifo_config|interfc
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_spell_chkr.svh(123) @ 0: reporter [UVM/CONFIGDB/SPELLCHK] include_coverage not located, did you mean env_cfg|fifo_config|interfc
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_spell_chkr.svh(123) @ 0: reporter [UVM/CONFIGDB/SPELLCHK] include_coverage not located, did you mean env_cfg|fifo_config|interfc
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_spell_chkr.svh(123) @ 0: reporter [UVM/CONFIGDB/SPELLCHK] include_coverage not located, did you mean env_cfg|fifo_config|interfc
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_spell_chkr.svh(123) @ 0: reporter [UVM/CONFIGDB/SPELLCHK] include_coverage not located, did you mean env_cfg|fifo_config|interfc
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_agent.sv(35) @ 0: uvm_test_top.env.alu_agnt [AGENT] Agent is_active =  UVM_ACTIVE
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(605) @ 0: reporter [UVMTOP] UVM testbench topology:
+----------------------------------------------------------------------------
+Name                       Type                                  Size  Value
+----------------------------------------------------------------------------
+uvm_test_top               edge_case_test                        -     @2094
+  env                      alu_env                               -     @2160
+    alu_agnt               alu_agent                             -     @2248
+      driver               alu_driver                            -     @3276
+        rsp_port           uvm_analysis_port                     -     @3380
+        seq_item_port      uvm_seq_item_pull_port                -     @3328
+      monitor              alu_monitor                           -     @4061
+        ap_monitor         uvm_analysis_port                     -     @4140
+        reset_port         uvm_analysis_port                     -     @4190
+      sequencer            fifo_sequencer                        -     @3411
+        rsp_export         uvm_analysis_export                   -     @3470
+        seq_item_export    uvm_seq_item_pull_imp                 -     @4030
+        arbitration_queue  array                                 0     -    
+        lock_queue         array                                 0     -    
+        num_last_reqs      integral                              32    'd1  
+        num_last_rsps      integral                              32    'd1  
+    alu_sboard             alu_scoreboard                        -     @2279
+      alu_analysis_export  uvm_analysis_imp                      -     @4265
+    m_apb_predictor        uvm_reg_predictor #(apb_transaction)  -     @2968
+      bus_in               uvm_analysis_imp                      -     @3021
+      reg_ap               uvm_analysis_port                     -     @3073
+    m_seqr                 fifo_virtual_sequencer                -     @2312
+      rsp_export           uvm_analysis_export                   -     @2373
+      seq_item_export      uvm_seq_item_pull_imp                 -     @2935
+      arbitration_queue    array                                 0     -    
+      lock_queue           array                                 0     -    
+      num_last_reqs        integral                              32    'd1  
+      num_last_rsps        integral                              32    'd1  
+----------------------------------------------------------------------------
+
+UVM_INFO /space/users/sofiac/alu/alu_verif/tests/base_test.sv(56) @ 0: uvm_test_top [testbase] run_phase testbase
+UVM_INFO /space/users/sofiac/alu/alu_verif/tests/edge_case_test.sv(29) @ 0: uvm_test_top [edge_case_test] run_phase START
+UVM_INFO /space/users/sofiac/alu/alu_verif/tests/edge_case_test.sv(34) @ 0: uvm_test_top [edge_case_test] Creating sequence...
+UVM_INFO /space/users/sofiac/alu/alu_verif/tests/edge_case_test.sv(39) @ 0: uvm_test_top [edge_case_test] Sequence created OK
+UVM_INFO /space/users/sofiac/alu/alu_verif/tests/edge_case_test.sv(42) @ 0: uvm_test_top [edge_case_test] Starting sequence...
+SDI/Verilog Transaction Recording Facility Version 22.03-s002
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(49) @ 0: uvm_test_top.env.alu_agnt.driver [driver] initialiazation of signals. Let's start
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(28) @ 0: uvm_test_top.env.alu_agnt.driver [driver] after the initialization of the signals
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(587) @ 0: uvm_test_top.env.m_seqr@@op_seq [edge_case_sequence] Starting simple RAL sequence
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(34) @ 50000: uvm_test_top.env.alu_agnt.driver [driver] out of RESET
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(36) @ 50000: uvm_test_top.env.alu_agnt.driver [driver] got through RESET
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 50000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 70000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 90000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:1 rdata:         1 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 90000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 90000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 90000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 90000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 90000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(591) @ 90000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+stop -create -name Randomize -randomize
+Created stop Randomize
+
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 90000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 90000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 90000: reporter [adapter] bus2reg : addr=0x4 data=0x1 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 90000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 90000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 90000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:4 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 110000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:4451 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 130000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 130000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:1 data:4451 rdata:         1 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 130000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 130000: reporter [adapter] bus2reg : addr=0x1 data=0x1163 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 130000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data0=0x1163
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(633) @ 130000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA0 = 1163
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 130000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=1 data=1163
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 130000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 130000: reporter [adapter] bus2reg : addr=0x1 data=0x1163 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 130000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data0: value='h1163 : updated value = 'h1163
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 180000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 180000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 190000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:18720 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 210000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 210000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:2 data:18720 rdata:         1 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 210000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 210000: reporter [adapter] bus2reg : addr=0x2 data=0x4920 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 210000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data1=0x4920
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(638) @ 210000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA1 = 4920
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 210000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=2 data=4920
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 210000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 210000: reporter [adapter] bus2reg : addr=0x2 data=0x4920 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 210000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data1: value='h4920 : updated value = 'h4920
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 310000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 310000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 330000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:17923 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 350000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 350000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:0 data:17923 rdata:         1 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 350000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 350000: reporter [adapter] bus2reg : addr=0x0 data=0x4603 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 350000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.ctl=0x4603
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(644) @ 350000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote CONTROL = 4603, its the 00000001 operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 350000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=0 data=4603
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(273) @ 350000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(181) @ 350000: uvm_test_top.env.alu_sboard [MONITORAKI] BUSSSSS=01
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 350000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 350000: reporter [adapter] bus2reg : addr=0x0 data=0x4603 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 350000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.ctl: value='h4603 : updated value = 'h4603
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 950000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 970000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 990000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 990000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 990000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 990000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 990000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 990000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(652) @ 990000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 990000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 990000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 990000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 990000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 990000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 990000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:4 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 1010000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:8473 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 1030000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 1030000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:1 data:8473 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1030000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1030000: reporter [adapter] bus2reg : addr=0x1 data=0x2119 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 1030000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data0=0x2119
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(633) @ 1030000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA0 = 2119
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 1030000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=1 data=2119
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1030000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1030000: reporter [adapter] bus2reg : addr=0x1 data=0x2119 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 1030000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data0: value='h2119 : updated value = 'h2119
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 1080000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 1080000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 1090000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:21585 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 1110000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 1110000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:2 data:21585 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1110000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1110000: reporter [adapter] bus2reg : addr=0x2 data=0x5451 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 1110000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data1=0x5451
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(638) @ 1110000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA1 = 5451
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 1110000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=2 data=5451
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1110000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1110000: reporter [adapter] bus2reg : addr=0x2 data=0x5451 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 1110000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data1: value='h5451 : updated value = 'h5451
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 1210000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 1210000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 1230000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:19971 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 1250000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 1250000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:0 data:19971 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1250000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1250000: reporter [adapter] bus2reg : addr=0x0 data=0x4e03 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 1250000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.ctl=0x4e03
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(644) @ 1250000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote CONTROL = 4e03, its the 00000002 operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 1250000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=0 data=4e03
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(273) @ 1250000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          2
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(181) @ 1250000: uvm_test_top.env.alu_sboard [MONITORAKI] BUSSSSS=01
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1250000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1250000: reporter [adapter] bus2reg : addr=0x0 data=0x4e03 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 1250000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.ctl: value='h4e03 : updated value = 'h4e03
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 1850000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 1870000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 1890000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 1890000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 1890000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1890000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1890000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 1890000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(652) @ 1890000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 1890000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1890000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1890000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 1890000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 1890000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 1890000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:4 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 1910000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:21330 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 1930000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 1930000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:1 data:21330 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1930000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1930000: reporter [adapter] bus2reg : addr=0x1 data=0x5352 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 1930000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data0=0x5352
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(633) @ 1930000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA0 = 5352
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 1930000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=1 data=5352
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 1930000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 1930000: reporter [adapter] bus2reg : addr=0x1 data=0x5352 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 1930000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data0: value='h5352 : updated value = 'h5352
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 1980000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 1980000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 1990000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:58423 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 2010000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 2010000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:2 data:58423 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2010000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2010000: reporter [adapter] bus2reg : addr=0x2 data=0xe437 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 2010000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data1=0xe437
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(638) @ 2010000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA1 = e437
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 2010000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=2 data=e437
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2010000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2010000: reporter [adapter] bus2reg : addr=0x2 data=0xe437 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 2010000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data1: value='he437 : updated value = 'he437
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 2110000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 2110000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 2130000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:6661 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 2150000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 2150000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:0 data:6661 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2150000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2150000: reporter [adapter] bus2reg : addr=0x0 data=0x1a05 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 2150000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.ctl=0x1a05
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(644) @ 2150000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote CONTROL = 1a05, its the 00000003 operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 2150000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=0 data=1a05
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(273) @ 2150000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          3
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(181) @ 2150000: uvm_test_top.env.alu_sboard [MONITORAKI] BUSSSSS=10
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2150000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2150000: reporter [adapter] bus2reg : addr=0x0 data=0x1a05 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 2150000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.ctl: value='h1a05 : updated value = 'h1a05
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 2750000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 2770000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 2790000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 2790000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 2790000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2790000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2790000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 2790000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(652) @ 2790000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 2790000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2790000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2790000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 2790000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 2790000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 2790000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:4 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 2810000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:32341 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 2830000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 2830000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:1 data:32341 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2830000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2830000: reporter [adapter] bus2reg : addr=0x1 data=0x7e55 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 2830000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data0=0x7e55
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(633) @ 2830000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA0 = 7e55
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 2830000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=1 data=7e55
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2830000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2830000: reporter [adapter] bus2reg : addr=0x1 data=0x7e55 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 2830000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data0: value='h7e55 : updated value = 'h7e55
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 2880000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 2880000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 2890000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:50149 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 2910000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 2910000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:2 data:50149 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2910000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2910000: reporter [adapter] bus2reg : addr=0x2 data=0xc3e5 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 2910000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data1=0xc3e5
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(638) @ 2910000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA1 = c3e5
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 2910000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=2 data=c3e5
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 2910000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 2910000: reporter [adapter] bus2reg : addr=0x2 data=0xc3e5 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 2910000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data1: value='hc3e5 : updated value = 'hc3e5
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 3010000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 3010000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 3030000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:64515 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 3050000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 3050000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:0 data:64515 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3050000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3050000: reporter [adapter] bus2reg : addr=0x0 data=0xfc03 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 3050000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.ctl=0xfc03
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(644) @ 3050000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote CONTROL = fc03, its the 00000004 operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 3050000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=0 data=fc03
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(273) @ 3050000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          4
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(181) @ 3050000: uvm_test_top.env.alu_sboard [MONITORAKI] BUSSSSS=01
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3050000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3050000: reporter [adapter] bus2reg : addr=0x0 data=0xfc03 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 3050000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.ctl: value='hfc03 : updated value = 'hfc03
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 3650000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 3670000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 3690000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:2 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 3690000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 3690000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3690000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3690000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 3690000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(652) @ 3690000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 3690000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=2
+UVM_ERROR /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(397) @ 3690000: uvm_test_top.env.alu_sboard [SB_MONITOR_MISMATCH] Expected monitor=00 Actual=10
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3690000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3690000: reporter [adapter] bus2reg : addr=0x4 data=0x2 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 3690000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h2
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 3690000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 3690000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:4 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 3710000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:16699 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 3730000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 3730000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:1 data:16699 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3730000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3730000: reporter [adapter] bus2reg : addr=0x1 data=0x413b kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 3730000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data0=0x413b
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(633) @ 3730000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA0 = 413b
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 3730000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=1 data=413b
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3730000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3730000: reporter [adapter] bus2reg : addr=0x1 data=0x413b kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 3730000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data0: value='h413b : updated value = 'h413b
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 3780000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 3780000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 3790000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:11768 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 3810000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 3810000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:2 data:11768 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3810000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3810000: reporter [adapter] bus2reg : addr=0x2 data=0x2df8 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 3810000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data1=0x2df8
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(638) @ 3810000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA1 = 2df8
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 3810000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=2 data=2df8
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3810000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3810000: reporter [adapter] bus2reg : addr=0x2 data=0x2df8 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 3810000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data1: value='h2df8 : updated value = 'h2df8
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 3910000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 3910000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 3930000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:9475 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 3950000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 3950000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:0 data:9475 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3950000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3950000: reporter [adapter] bus2reg : addr=0x0 data=0x2503 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 3950000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.ctl=0x2503
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(644) @ 3950000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote CONTROL = 2503, its the 00000005 operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 3950000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=0 data=2503
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(273) @ 3950000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          5
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(275) @ 3950000: uvm_test_top.env.alu_sboard [SCOREBOARD] FIFO OUT FULL,cannot accept new operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 3950000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 3950000: reporter [adapter] bus2reg : addr=0x0 data=0x2503 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 3950000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.ctl: value='h2503 : updated value = 'h2503
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 4550000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 4570000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 4590000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:2 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 4590000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 4590000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 4590000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 4590000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 4590000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(652) @ 4590000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 4590000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=2
+UVM_ERROR /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(397) @ 4590000: uvm_test_top.env.alu_sboard [SB_MONITOR_MISMATCH] Expected monitor=00 Actual=10
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 4590000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 4590000: reporter [adapter] bus2reg : addr=0x4 data=0x2 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 4590000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h2
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 4590000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 4590000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:4 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 4610000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:38934 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 4630000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 4630000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:1 data:38934 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 4630000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 4630000: reporter [adapter] bus2reg : addr=0x1 data=0x9816 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 4630000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data0=0x9816
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(633) @ 4630000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA0 = 9816
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 4630000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=1 data=9816
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 4630000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 4630000: reporter [adapter] bus2reg : addr=0x1 data=0x9816 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 4630000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data0: value='h9816 : updated value = 'h9816
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 4680000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 4680000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 4690000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:27629 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 4710000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 4710000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:2 data:27629 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 4710000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 4710000: reporter [adapter] bus2reg : addr=0x2 data=0x6bed kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 4710000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data1=0x6bed
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(638) @ 4710000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA1 = 6bed
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 4710000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=2 data=6bed
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 4710000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 4710000: reporter [adapter] bus2reg : addr=0x2 data=0x6bed kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 4710000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data1: value='h6bed : updated value = 'h6bed
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 4810000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 4810000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 4830000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:9733 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 4850000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 4850000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:0 data:9733 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 4850000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 4850000: reporter [adapter] bus2reg : addr=0x0 data=0x2605 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 4850000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.ctl=0x2605
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(644) @ 4850000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote CONTROL = 2605, its the 00000006 operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 4850000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=0 data=2605
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(273) @ 4850000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          6
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(275) @ 4850000: uvm_test_top.env.alu_sboard [SCOREBOARD] FIFO OUT FULL,cannot accept new operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 4850000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 4850000: reporter [adapter] bus2reg : addr=0x0 data=0x2605 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 4850000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.ctl: value='h2605 : updated value = 'h2605
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 5450000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 5470000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 5490000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:2 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 5490000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 5490000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 5490000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 5490000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 5490000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(652) @ 5490000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 5490000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=2
+UVM_ERROR /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(397) @ 5490000: uvm_test_top.env.alu_sboard [SB_MONITOR_MISMATCH] Expected monitor=00 Actual=10
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 5490000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 5490000: reporter [adapter] bus2reg : addr=0x4 data=0x2 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 5490000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h2
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 5490000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 5490000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:4 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 5510000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:34225 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 5530000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 5530000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:1 data:34225 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 5530000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 5530000: reporter [adapter] bus2reg : addr=0x1 data=0x85b1 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 5530000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data0=0x85b1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(633) @ 5530000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA0 = 85b1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 5530000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=1 data=85b1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 5530000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 5530000: reporter [adapter] bus2reg : addr=0x1 data=0x85b1 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 5530000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data0: value='h85b1 : updated value = 'h85b1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 5580000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 5580000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 5590000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:64814 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 5610000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 5610000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:2 data:64814 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 5610000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 5610000: reporter [adapter] bus2reg : addr=0x2 data=0xfd2e kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 5610000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data1=0xfd2e
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(638) @ 5610000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA1 = fd2e
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 5610000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=2 data=fd2e
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 5610000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 5610000: reporter [adapter] bus2reg : addr=0x2 data=0xfd2e kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 5610000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data1: value='hfd2e : updated value = 'hfd2e
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 5710000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 5710000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 5730000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:56069 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 5750000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 5750000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:0 data:56069 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 5750000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 5750000: reporter [adapter] bus2reg : addr=0x0 data=0xdb05 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 5750000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.ctl=0xdb05
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(644) @ 5750000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote CONTROL = db05, its the 00000007 operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 5750000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=0 data=db05
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(273) @ 5750000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          7
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(275) @ 5750000: uvm_test_top.env.alu_sboard [SCOREBOARD] FIFO OUT FULL,cannot accept new operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 5750000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 5750000: reporter [adapter] bus2reg : addr=0x0 data=0xdb05 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 5750000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.ctl: value='hdb05 : updated value = 'hdb05
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 6350000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 6370000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 6390000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:2 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 6390000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 6390000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 6390000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 6390000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 6390000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(652) @ 6390000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 6390000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=2
+UVM_ERROR /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(397) @ 6390000: uvm_test_top.env.alu_sboard [SB_MONITOR_MISMATCH] Expected monitor=00 Actual=10
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 6390000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 6390000: reporter [adapter] bus2reg : addr=0x4 data=0x2 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 6390000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h2
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 6390000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 6390000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:4 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 6410000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:43531 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 6430000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 6430000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:1 data:43531 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 6430000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 6430000: reporter [adapter] bus2reg : addr=0x1 data=0xaa0b kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 6430000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data0=0xaa0b
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(633) @ 6430000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA0 = aa0b
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 6430000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=1 data=aa0b
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 6430000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 6430000: reporter [adapter] bus2reg : addr=0x1 data=0xaa0b kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 6430000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data0: value='haa0b : updated value = 'haa0b
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 6480000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 6480000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 6490000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:35826 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 6510000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 6510000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:2 data:35826 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 6510000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 6510000: reporter [adapter] bus2reg : addr=0x2 data=0x8bf2 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 6510000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data1=0x8bf2
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(638) @ 6510000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA1 = 8bf2
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 6510000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=2 data=8bf2
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 6510000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 6510000: reporter [adapter] bus2reg : addr=0x2 data=0x8bf2 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 6510000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data1: value='h8bf2 : updated value = 'h8bf2
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 6610000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 6610000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 6630000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:28931 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 6650000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 6650000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:0 data:28931 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 6650000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 6650000: reporter [adapter] bus2reg : addr=0x0 data=0x7103 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 6650000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.ctl=0x7103
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(644) @ 6650000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote CONTROL = 7103, its the 00000008 operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 6650000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=0 data=7103
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(273) @ 6650000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          8
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(275) @ 6650000: uvm_test_top.env.alu_sboard [SCOREBOARD] FIFO OUT FULL,cannot accept new operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 6650000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 6650000: reporter [adapter] bus2reg : addr=0x0 data=0x7103 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 6650000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.ctl: value='h7103 : updated value = 'h7103
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 7250000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 7270000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 7290000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:2 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 7290000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 7290000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 7290000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 7290000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 7290000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(652) @ 7290000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 7290000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=2
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 7290000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 7290000: reporter [adapter] bus2reg : addr=0x4 data=0x2 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 7290000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h2
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 7290000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 7290000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:4 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 7310000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:40416 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 7330000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 7330000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:1 data:40416 rdata:         2 slverr:1 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 7330000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 7330000: reporter [adapter] bus2reg : addr=0x1 data=0x9de0 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 7330000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data0=0x9de0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(633) @ 7330000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA0 = 9de0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 7330000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=1 data=9de0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(291) @ 7330000: uvm_test_top.env.alu_sboard [SCOREBOARD] SYSTEM FULL,cannot accept new operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 7330000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 7330000: reporter [adapter] bus2reg : addr=0x1 data=0x9de0 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 7330000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data0: value='h9de0 : updated value = 'h9de0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 7380000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 7380000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 7390000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:8082 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 7410000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 7410000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:2 data:8082 rdata:         2 slverr:1 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 7410000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 7410000: reporter [adapter] bus2reg : addr=0x2 data=0x1f92 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 7410000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.data1=0x1f92
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(638) @ 7410000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote DATA1 = 1f92
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 7410000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=2 data=1f92
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(302) @ 7410000: uvm_test_top.env.alu_sboard [SCOREBOARD] SYSTEM FULL,cannot accept new operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 7410000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 7410000: reporter [adapter] bus2reg : addr=0x2 data=0x1f92 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 7410000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.data1: value='h1f92 : updated value = 'h1f92
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 7510000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(84) @ 7510000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.paddr:2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(87) @ 7530000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.pwdata:64771 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(93) @ 7550000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.penable:1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 7550000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:0 data:64771 rdata:         2 slverr:1 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 7550000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 7550000: reporter [adapter] bus2reg : addr=0x0 data=0xfd03 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO @ 7550000: reporter [RegModel] Wrote register via map m_ral_model.uvm_reg_map: m_ral_model.ctl=0xfd03
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(644) @ 7550000: uvm_test_top.env.m_seqr@@op_seq [SEQ] Wrote CONTROL = fd03, its the 00000009 operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 7550000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=1 addr=0 data=fd03
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(256) @ 7550000: uvm_test_top.env.alu_sboard [SCOREBOARD] SYSTEM FULL,cannot accept new operation
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 7550000: reporter [adapter] bus2reg : pkt.write=    
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 7550000: reporter [adapter] bus2reg : addr=0x0 data=0xfd03 kind=UVM_WRITE status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(221) @ 7550000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed WRITE transaction to register m_ral_model.ctl: value='hfd03 : updated value = 'hfd03
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 8150000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 8170000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 8190000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:2 rdata:         2 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 8190000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 8190000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 2 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8190000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8190000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 8190000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(652) @ 8190000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 8190000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=2
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8190000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8190000: reporter [adapter] bus2reg : addr=0x4 data=0x2 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 8190000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h2
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 8240000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 8250000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 8290000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:3 data:9198211 rdata:   9198211 slverr:0 wait_states:1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 8290000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 8290000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 8c5a83 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8290000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8290000: reporter [adapter] bus2reg : addr=0x3 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 8290000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.result=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(663) @ 8290000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 8290000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=3 data=8c5a83
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(362) @ 8290000: uvm_test_top.env.alu_sboard [SCORE] size= 70
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(181) @ 8290000: uvm_test_top.env.alu_sboard [MONITORAKI] BUSSSSS=01
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(371) @ 8290000: uvm_test_top.env.alu_sboard [SCORE] ID= 70 carry = 0 result = 5a83
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(373) @ 8290000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          7
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8290000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8290000: reporter [adapter] bus2reg : addr=0x3 data=0x8c5a83 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 8290000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.result: value='h8c5a83
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 8390000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 8410000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 8430000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 8430000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 8430000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8430000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8430000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 8430000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(667) @ 8430000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 8430000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8430000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8430000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 8430000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 8480000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 8490000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 8530000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:3 data:10253674 rdata:  10253674 slverr:0 wait_states:1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 8530000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 8530000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 9c756a 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8530000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8530000: reporter [adapter] bus2reg : addr=0x3 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 8530000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.result=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(663) @ 8530000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 8530000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=3 data=9c756a
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(362) @ 8530000: uvm_test_top.env.alu_sboard [SCORE] size= 78
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(181) @ 8530000: uvm_test_top.env.alu_sboard [MONITORAKI] BUSSSSS=10
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(371) @ 8530000: uvm_test_top.env.alu_sboard [SCORE] ID= 78 carry = 0 result = 756a
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(373) @ 8530000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          6
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8530000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8530000: reporter [adapter] bus2reg : addr=0x3 data=0x9c756a kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 8530000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.result: value='h9c756a
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 8630000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 8650000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 8670000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 8670000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 8670000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8670000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8670000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 8670000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(667) @ 8670000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 8670000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8670000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8670000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 8670000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 8720000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 8730000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 8770000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:3 data:3412382 rdata:   3412382 slverr:0 wait_states:1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 8770000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 8770000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 34119e 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8770000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8770000: reporter [adapter] bus2reg : addr=0x3 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 8770000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.result=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(663) @ 8770000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 8770000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=3 data=34119e
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(362) @ 8770000: uvm_test_top.env.alu_sboard [SCORE] size= 26
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(181) @ 8770000: uvm_test_top.env.alu_sboard [MONITORAKI] BUSSSSS=10
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(371) @ 8770000: uvm_test_top.env.alu_sboard [SCORE] ID= 26 carry = 0 result = 119e
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(373) @ 8770000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          5
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8770000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8770000: reporter [adapter] bus2reg : addr=0x3 data=0x34119e kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 8770000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.result: value='h34119e
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 8870000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 8890000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 8910000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 8910000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 8910000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8910000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8910000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 8910000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(667) @ 8910000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 8910000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 8910000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 8910000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 8910000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 8960000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 8970000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 9010000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:3 data:33112634 rdata:  33112634 slverr:0 wait_states:1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 9010000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 9010000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 1f9423a 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9010000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9010000: reporter [adapter] bus2reg : addr=0x3 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 9010000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.result=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(663) @ 9010000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 9010000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=3 data=1f9423a
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(362) @ 9010000: uvm_test_top.env.alu_sboard [SCORE] size=252
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(181) @ 9010000: uvm_test_top.env.alu_sboard [MONITORAKI] BUSSSSS=01
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(371) @ 9010000: uvm_test_top.env.alu_sboard [SCORE] ID=252 carry = 1 result = 423a
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(373) @ 9010000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          4
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9010000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9010000: reporter [adapter] bus2reg : addr=0x3 data=0x1f9423a kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 9010000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.result: value='h1f9423a
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 9110000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 9130000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 9150000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 9150000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 9150000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9150000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9150000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 9150000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(667) @ 9150000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 9150000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9150000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9150000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 9150000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 9200000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 9210000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 9250000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:3 data:4878131 rdata:   4878131 slverr:0 wait_states:1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 9250000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 9250000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 4a6f33 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9250000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9250000: reporter [adapter] bus2reg : addr=0x3 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 9250000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.result=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(663) @ 9250000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 9250000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=3 data=4a6f33
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(362) @ 9250000: uvm_test_top.env.alu_sboard [SCORE] size= 37
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(371) @ 9250000: uvm_test_top.env.alu_sboard [SCORE] ID= 37 carry = 0 result = 6f33
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(373) @ 9250000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          3
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9250000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9250000: reporter [adapter] bus2reg : addr=0x3 data=0x4a6f33 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 9250000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.result: value='h4a6f33
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 9350000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 9370000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 9390000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 9390000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 9390000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9390000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9390000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 9390000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(667) @ 9390000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 9390000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9390000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9390000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 9390000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 9440000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 9450000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 9490000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:3 data:4985950 rdata:   4985950 slverr:0 wait_states:1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 9490000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 9490000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 4c145e 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9490000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9490000: reporter [adapter] bus2reg : addr=0x3 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 9490000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.result=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(663) @ 9490000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 9490000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=3 data=4c145e
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(362) @ 9490000: uvm_test_top.env.alu_sboard [SCORE] size= 38
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(371) @ 9490000: uvm_test_top.env.alu_sboard [SCORE] ID= 38 carry = 0 result = 145e
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(373) @ 9490000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          2
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9490000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9490000: reporter [adapter] bus2reg : addr=0x3 data=0x4c145e kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 9490000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.result: value='h4c145e
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 9590000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 9610000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 9630000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 9630000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 9630000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9630000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9630000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 9630000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(667) @ 9630000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 9630000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9630000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9630000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 9630000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 9680000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 9690000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 9730000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:3 data:14890493 rdata:  14890493 slverr:0 wait_states:1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 9730000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 9730000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: e335fd 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9730000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9730000: reporter [adapter] bus2reg : addr=0x3 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 9730000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.result=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(663) @ 9730000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 9730000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=3 data=e335fd
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(362) @ 9730000: uvm_test_top.env.alu_sboard [SCORE] size=113
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(371) @ 9730000: uvm_test_top.env.alu_sboard [SCORE] ID=113 carry = 1 result = 35fd
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(373) @ 9730000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9730000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9730000: reporter [adapter] bus2reg : addr=0x3 data=0xe335fd kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 9730000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.result: value='he335fd
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 9830000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 9850000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 9870000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:0 rdata:         0 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 9870000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 9870000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9870000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9870000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 9870000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(667) @ 9870000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 9870000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9870000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9870000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 9870000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 9920000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 9930000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 9970000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:3 data:28712910 rdata:  28712910 slverr:0 wait_states:1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 9970000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 9970000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 1b61fce 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9970000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9970000: reporter [adapter] bus2reg : addr=0x3 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 9970000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.result=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(663) @ 9970000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 9970000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=3 data=1b61fce
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(362) @ 9970000: uvm_test_top.env.alu_sboard [SCORE] size=219
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(371) @ 9970000: uvm_test_top.env.alu_sboard [SCORE] ID=219 carry = 0 result = 1fce
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(373) @ 9970000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 9970000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 9970000: reporter [adapter] bus2reg : addr=0x3 data=0x1b61fce kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 9970000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.result: value='h1b61fce
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 10070000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 10090000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 10110000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:1 rdata:         1 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 10110000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 10110000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 10110000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 10110000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 10110000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(667) @ 10110000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 10110000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 10110000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 10110000: reporter [adapter] bus2reg : addr=0x4 data=0x1 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 10110000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 10160000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 10170000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 10190000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:3 data:1 rdata:         1 slverr:1 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 10210000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 10210000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 1b61fce 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 10210000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 10210000: reporter [adapter] bus2reg : addr=0x3 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 10210000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.result=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(663) @ 10210000: uvm_test_top.env.m_seqr@@op_seq [SEQ] RESULT = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 10210000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=3 data=1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(371) @ 10210000: uvm_test_top.env.alu_sboard [SCORE] ID=  0 carry = 0 result = 0000
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(373) @ 10210000: uvm_test_top.env.alu_sboard [MONITORAKI]  count=          0
+UVM_ERROR /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(378) @ 10210000: uvm_test_top.env.alu_sboard [SB_DATA_MISMATCH] Expected=0x0 Actual=0x1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 10210000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 10210000: reporter [adapter] bus2reg : addr=0x3 data=0x1 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 10210000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.result: value='h1
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(63) @ 10310000: uvm_test_top.env.alu_agnt.driver [DRIVER] data_obj.op:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(116) @ 10330000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_monitor.sv(132) @ 10350000: uvm_test_top.env.alu_agnt.monitor [MONITOR] DATA READ WRITE addr:4 data:1 rdata:         1 slverr:0 wait_states:0
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(121) @ 10350000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.ready:0 
+UVM_INFO /space/users/sofiac/alu/alu_verif/agent/alu_driver.sv(130) @ 10350000: uvm_test_top.env.alu_agnt.driver [DRIVER] vintf.prdata: 1 
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 10350000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 10350000: reporter [adapter] bus2reg : addr=0x4 data=0x0 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO @ 10350000: reporter [RegModel] Read  register via map m_ral_model.uvm_reg_map: m_ral_model.monitor=0
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_seq_lib.sv(667) @ 10350000: uvm_test_top.env.m_seqr@@op_seq [SEQ] MONITOR STATUS = 0000000
+UVM_INFO /space/users/sofiac/alu/alu_verif/tests/edge_case_test.sv(45) @ 10350000: uvm_test_top [edge_case_test]  sequence FINISHED
+UVM_INFO /space/users/sofiac/alu/alu_verif/tests/edge_case_test.sv(48) @ 10350000: uvm_test_top [edge_case_test] run_phase END
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_objection.svh(1271) @ 10350000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/alu_scoreboard.sv(140) @ 10350000: uvm_test_top.env.alu_sboard [SB_DEBUG] SB GOT pkt: write=0 addr=4 data=1
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(36) @ 10350000: reporter [adapter] bus2reg : pkt.write=     
+UVM_INFO /space/users/sofiac/alu/alu_verif/env/adapter.sv(38) @ 10350000: reporter [adapter] bus2reg : addr=0x4 data=0x1 kind=UVM_READ status=UVM_IS_OK
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/reg/uvm_reg_predictor.svh(225) @ 10350000: uvm_test_top.env.m_apb_predictor [REG_PREDICT] Observed READ transaction to register m_ral_model.monitor: value='h1
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_report_catcher.svh(705) @ 10350000: reporter [UVM/REPORT/CATCHER] 
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+UVM_INFO /tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_report_server.svh(847) @ 10350000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :  789
+UVM_WARNING :    0
+UVM_ERROR :    5
+UVM_FATAL :    0
+** Report counts by id
+[AGENT]     1
+[DRIVER]   220
+[MONITOR]    55
+[MONITORAKI]    25
+[REG_PREDICT]    55
+[RNTST]     1
+[RegModel]    55
+[SB_DATA_MISMATCH]     1
+[SB_DEBUG]    55
+[SB_MONITOR_MISMATCH]     4
+[SCORE]    17
+[SCOREBOARD]     7
+[SEQ]    55
+[TEST_DONE]     1
+[UVM/CONFIGDB/SPELLCHK]     6
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[UVMTOP]     1
+[adapter]   220
+[driver]     4
+[edge_case_sequence]     1
+[edge_case_test]     7
+[testbase]     1
+
+Simulation complete via $finish(1) at time 10350 NS + 69
+/tools/cdnc/xcelium/current/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:543     $finish;
+xcelium> ^C
+xcelium> exit
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  top_tb(top_tb)
+  scope    :  scope
+  testname :  test_sv583054437
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_4c9cfd65_00000000.ucm (reused)
+  data               :  ./cov_work/scope/test_sv583054437/icc_4c9cfd65_00000000.ucd
+TOOL:	xrun(64)	22.03-s002: Exiting on Jan 16, 2026 at 06:58:52 UTC  (total: 15:49:09)

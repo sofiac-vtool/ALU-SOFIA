@@ -9,6 +9,7 @@ class alu_driver extends uvm_driver #(apb_transaction);
    virtual interfc vintf;
    apb_transaction data_obj;
    fifo_config fifo_conf;
+   bit got_item;
 
    virtual function void build_phase (uvm_phase phase);
       super.build_phase(phase);
@@ -52,6 +53,7 @@ class alu_driver extends uvm_driver #(apb_transaction);
       vintf.pwrite  <= 0;
       vintf.psel    <= 0;
       vintf.penable <= 0;
+      got_item =0 ;
    
    endtask
 
@@ -60,6 +62,7 @@ class alu_driver extends uvm_driver #(apb_transaction);
       // if (!vintf.presetn) @(vintf.presetn); 
       //  seq_item_port.get_next_item(req);
          seq_item_port.get_next_item (data_obj);
+         got_item = 1;
          `uvm_info("DRIVER", $sformatf("data_obj.op:%0d ",data_obj.op), UVM_HIGH)
 
          if( data_obj.write == 1) begin
@@ -72,6 +75,7 @@ class alu_driver extends uvm_driver #(apb_transaction);
             `uvm_info(get_name(), "after read task", UVM_DEBUG)
          end
          seq_item_port.item_done(data_obj);
+         got_item = 0;
       end
       endtask //do_drive
 
@@ -136,7 +140,10 @@ class alu_driver extends uvm_driver #(apb_transaction);
    task reset();
       @(negedge vintf.presetn);
       `uvm_info("DRIVER", $sformatf("Reset detected "), UVM_NONE)
-
+		if(got_item)begin
+	  	 seq_item_port.item_done(data_obj);
+	  	 got_item = 0;
+	  	end
    endtask //reset
 
 

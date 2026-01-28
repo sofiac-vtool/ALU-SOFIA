@@ -18,7 +18,14 @@ package alu_test_pkg;
    `include "functional/no_start_exec_test.sv"
    `include "functional/sequence_order_test.sv"
    `include "edge_case_test.sv"
-
+   `include "error_scenarios/invalid_wirte_address_test.sv"
+   `include "error_scenarios/invalid_read_address_test.sv"
+   `include "error_scenarios/invalid_ctrl_data_test.sv"
+   `include "error_scenarios/underflow_test.sv"
+   `include "error_scenarios/overflow_test.sv"
+   `include "random_test.sv"
+   `include "stress_test.sv"
+   `include "reset_test.sv"
 
 endpackage
 `endif

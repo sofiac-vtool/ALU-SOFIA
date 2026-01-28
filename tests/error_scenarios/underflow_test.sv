@@ -1,30 +1,30 @@
-class error_invalid_ctrl_data_test extends base_test;
-  `uvm_component_utils(error_invalid_ctrl_data_test)
+class error_underflow_test extends base_test;
+  `uvm_component_utils(error_underflow_test)
 
   
   reg_block   m_ral_model; //register model
-  error_invalid_ctrl_data_sequence op_seq;// Declare sequence handle
+  error_underflow_sequence op_seq;// Declare sequence handle
    
 
   // Constructor declaration
-  extern function new(string name="error_invalid_ctrl_data_test", uvm_component parent=null);
+  extern function new(string name="error_underflow_test", uvm_component parent=null);
 
   // run_phase declaration
   extern virtual task run_phase(uvm_phase phase);
 
-endclass : error_invalid_ctrl_data_test
+endclass : error_underflow_test
 
 
 // ===================== Implementation =====================
 
-function error_invalid_ctrl_data_test::new(string name, uvm_component parent);
+function error_underflow_test::new(string name, uvm_component parent);
   super.new(name, parent);
 endfunction : new
 
 
 //-------------------------------------------------------------------------------------------------------------
 // run_phase implementation
-task error_invalid_ctrl_data_test::run_phase(uvm_phase phase);
+task error_underflow_test::run_phase(uvm_phase phase);
    super.run_phase(phase);
   `uvm_info(get_type_name(), "run_phase START", UVM_LOW)
   phase.raise_objection(this);
@@ -32,7 +32,7 @@ task error_invalid_ctrl_data_test::run_phase(uvm_phase phase);
     // Main sequence
     begin
       `uvm_info(get_type_name(), "Creating sequence...", UVM_LOW)
-      op_seq = error_invalid_ctrl_data_sequence::type_id::create("op_seq");
+      op_seq = error_underflow_sequence::type_id::create("op_seq");
       if (op_seq == null)
         `uvm_fatal("TEST", "Failed to create seq")
       else

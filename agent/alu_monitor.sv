@@ -69,7 +69,7 @@ class alu_monitor extends uvm_monitor;
       end*/
 	forever begin
       	wait (vintf.psel==1 && vintf.penable==1);
-//my_trans -> apb_transaction, απο που ήταν το my_trans?
+//my_trans -> apb_transaction, ??? ??? ???? ?? my_trans?
 		tr_item =apb_transaction::type_id::create("tr_item", this);
 
 		tr_item.wait_states = 0;

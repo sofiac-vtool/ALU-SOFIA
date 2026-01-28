@@ -13,7 +13,7 @@ class apb_transaction extends uvm_sequence_item;
    logic wait_states;
    logic timeout;
 
-   constraint c_addr {soft addr inside{0,1,2,3,4};}
+   constraint c_addr {addr inside{0,1,2,3,4};}
 
    function new(string name = "");
       super.new (name);

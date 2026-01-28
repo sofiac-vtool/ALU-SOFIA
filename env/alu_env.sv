@@ -64,7 +64,7 @@ function void alu_env:: connect_phase (uvm_phase phase);
 
 /////Connect the monitors analysis port to the scoreboard
 	alu_agnt.monitor.ap_monitor.connect(alu_sboard.alu_analysis_export);
-
+    alu_agnt.monitor.reset_port.connect(alu_sboard.rst_imp);
 
     m_ral_model.reg_map.set_sequencer(.sequencer(alu_agnt.sequencer), .adapter(m_adapter)); 
     m_ral_model.reg_map.set_base_addr(0); 

@@ -36,6 +36,7 @@ class sanity_operation_sequence extends base_seq;
    `uvm_object_utils(sanity_operation_sequence)
 
 //Declare
+ virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -45,6 +46,9 @@ class sanity_operation_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+   
+      if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -72,15 +76,17 @@ class sanity_operation_sequence extends base_seq;
        #50ns
       //PERFORM A VALID OPERATION / Write to control register
       control_reg_val[0]   = 1'b1;     // start
-      control_reg_val[2:1] = 2'b01;    // valid operation
+      control_reg_val[2:1] = 2'b10;    // valid operation
       control_reg_val[15:8] = 8'h10;   // ID example
 
       m_ral_model.ctl.write(status, control_reg_val);
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #300ns
-
+      repeat(31)begin
+	    @(posedge vintf.clk);
+	   end
+	   
       //READ RESULT REGISTER
       m_ral_model.result.read(status, result);
 
@@ -466,7 +472,7 @@ class functional_sequence_order_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #100ns
+       #1000ns
 
         //READ MONITOR REGISTER
       m_ral_model.monitor.read(status, monitor);
@@ -574,13 +580,15 @@ class edge_case_sequence extends base_seq;
    endtask
 
    virtual task body();
+   
+   
       bit[15:0] reg1_val = 16'b0001000111000101;
       bit[15:0] reg2_val = 16'b1000111111000110;
       bit[15:0] control_reg_val;
       bit[24:0] result;
       bit[24:0] monitor;
 
-      int i = 9;
+      int i = 5;
       int j = 0;
       my_rand trans;
 
@@ -661,7 +669,7 @@ class edge_case_sequence extends base_seq;
         //READ RESULT REGISTER
             m_ral_model.result.read(status, result);
             `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
-        #100ns
+        #600ns
          //READ MONITOR REGISTER
              m_ral_model.monitor.read(status, monitor);
             `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
@@ -669,5 +677,550 @@ class edge_case_sequence extends base_seq;
    endtask
 endclass
 
+//=========================================================================
+//-----------------------------ERROR SCENARIOS ----------------------------
+//=========================================================================
+//=========================================================================
+//--------------------INVALID WRITE ADDRESS TEST SEQUENCE------------------
+//=========================================================================
+//Send valid data to all addresses that are not write-only (WO).  
+//Read the monitor register. 
 
+
+class error_invalid_write_address_sequence extends uvm_sequence#(apb_transaction);
+   `uvm_object_utils(error_invalid_write_address_sequence)
+   `uvm_declare_p_sequencer(fifo_sequencer)
+//Declare
+   reg_block m_ral_model;
+   uvm_status_e status;
+
+   rand bit [`APB_BUS_SIZE-1 : 0] mdata;
+   rand bit [`ADDR_W :0] maddr;
+   rand wr_rd_type operation;
+   bit[15:0] reg1_val = 16'b0001000111000101;
+   bit[15:0] reg2_val = 16'b1000111111000110; 
+   bit[15:0] control_reg_val;
+   bit[24:0] monitor;
+
+ //  constraint addr_c {maddr inside {3'b011, 3'b100, 3'b101, 3'b110, 3'b111};}
+   constraint addr_c {maddr inside {3'b011, 3'b101};}
+   constraint mdata_c {
+  	mdata[0] == 0;                 
+  	mdata[2:1] inside {2'b01, 2'b10};
+   }
+   
+   function new (string name ="");
+      super.new(name);
+   endfunction
+
+ virtual task pre_body();
+      if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
+         `uvm_fatal("RAL", "Cannot get RAL model from config DB");
+
+   endtask
+   virtual task body();
+  `uvm_info(get_name(), "Inside seq body", UVM_DEBUG)
+  repeat (3) begin
+  // Randomize sequence-level variables
+  if (!this.randomize())
+    `uvm_fatal(get_name(), "Sequence randomization failed")
+
+  // RAL writes
+  m_ral_model.data0.write(status, reg1_val, .parent(this));
+  `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
+
+  m_ral_model.data1.write(status, reg2_val, .parent(this));
+  `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
+
+
+    req = apb_transaction::type_id::create("req");
+
+    if (!req.randomize() with {
+      addr == maddr;
+      data == mdata;
+      op   == operation;
+      write == 1;
+    })
+      `uvm_fatal(get_name(), "APB item randomization failed")
+    start_item(req);
+    finish_item(req);
+    get_response(rsp);
+    `uvm_info(get_name(),
+              $psprintf("Transaction sent:\n%s", req.sprint()),
+              UVM_MEDIUM)
+  end
+   #100ns
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+  
+endtask
+endclass : error_invalid_write_address_sequence
+//=========================================================================
+//--------------------INVALID READ ADDRESS TEST SEQUENCE------------------
+//=========================================================================
+//Send traffic. 
+//Attempt to read from all invalid addresses . 
+//Read the result register. 
+
+class error_invalid_read_address_sequence extends uvm_sequence#(apb_transaction);
+   `uvm_object_utils(error_invalid_read_address_sequence)
+   `uvm_declare_p_sequencer(fifo_sequencer)
+//Declare
+   reg_block m_ral_model;
+   uvm_status_e status;
+
+   rand bit [`APB_BUS_SIZE-1 : 0] mdata;
+   rand bit [`ADDR_W :0] maddr;
+   rand wr_rd_type operation;
+   bit[15:0] reg1_val = 16'b0001000111000101;
+   bit[15:0] reg2_val = 16'b1000111111000110; 
+   bit[15:0] control_reg_val;
+
+
+   bit[24:0] monitor;
+   bit[24:0] result;
+
+ //  constraint addr_c {maddr inside {3'b011, 3'b100, 3'b101, 3'b110, 3'b111};}
+   constraint addr_c {maddr inside {3'b000, 3'b001, 3'b010,3'b101, 3'b110, 3'b111};}
+   
+   
+   function new (string name ="");
+      super.new(name);
+   endfunction
+
+ virtual task pre_body();
+      if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
+         `uvm_fatal("RAL", "Cannot get RAL model from config DB");
+
+   endtask
+   virtual task body();
+   
+   control_reg_val[0]   = 1'b1;     // start
+   control_reg_val[2:1] = 2'b01;    // addition
+   control_reg_val[15:8] = 11000110;   // ID example
+  `uvm_info(get_name(), "Inside seq body", UVM_DEBUG)
+ 
+  // RAL writes
+  m_ral_model.data0.write(status, reg1_val, .parent(this));
+  `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
+
+  m_ral_model.data1.write(status, reg2_val, .parent(this));
+  `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
+   
+  m_ral_model.ctl.write(status, control_reg_val); 
+   `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
+   
+   #200ns
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+   
+ repeat (3) begin
+  // Randomize sequence-level variables
+  if (!this.randomize())
+    `uvm_fatal(get_name(), "Sequence randomization failed")
+
+
+    req = apb_transaction::type_id::create("req");
+
+    if (!req.randomize() with {
+      addr == maddr;
+      write == 0;
+    })
+      `uvm_fatal(get_name(), "APB item randomization failed")
+    start_item(req);
+    finish_item(req);
+    get_response(rsp);
+    `uvm_info(get_name(),
+              $psprintf("Transaction sent:\n%s", req.sprint()),
+              UVM_MEDIUM)
+  end
+   #100ns
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+  
+endtask
+endclass : error_invalid_read_address_sequence
+//=========================================================================
+//--------------------INVALID CTRL DATA TEST SEQUENCE------------------
+//=========================================================================
+//Write data to registers 1 & 2. 
+//Write to register 0 using ctrl_data values that do not correspond to any valid operation.
+
+class error_invalid_ctrl_data_sequence extends base_seq;
+//Fctory Registration
+   `uvm_object_utils(error_invalid_ctrl_data_sequence)
+
+//Declare
+   reg_block m_ral_model;
+   uvm_status_e status;
+
+//Constructor
+   function new(string name="error_invalid_ctrl_data_sequence");
+      super.new(name);
+   endfunction
+
+   virtual task pre_body();
+      if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
+         `uvm_fatal("RAL", "Cannot get RAL model from config DB");
+
+   endtask
+
+   virtual task body();
+      bit[15:0] reg1_val = 16'h1234;
+      bit[15:0] reg2_val = 16'hABCD;
+      bit[15:0] control_reg_val;
+      bit[24:0] result;
+      bit[24:0] monitor;
+   
+      //WRITE REGISTER 1
+      m_ral_model.data0.write(status, reg1_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       #50ns
+      //WRITE REGISTER 2
+      m_ral_model.data1.write(status, reg2_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       #50ns
+      //PERFORM AN ADDITION/ Write to control register
+      control_reg_val[0]   = 1'b0;     // start
+      control_reg_val[2:1] = 2'b11;    // INVALID
+      control_reg_val[15:8] = 8'h10;   // ID example
+
+      m_ral_model.ctl.write(status, control_reg_val);
+      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       #200ns
+      //PERFORM A MULTIPLICATION/ Write to control register
+      control_reg_val[0]   = 1'b0;     // start
+      control_reg_val[2:1] = 2'b00;    // INVALID
+      control_reg_val[15:8] = 8'b11111000;   // ID example
+
+      m_ral_model.ctl.write(status, control_reg_val);
+      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       #200ns
+
+      //READ RESULT REGISTER
+      m_ral_model.result.read(status, result);
+      `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
+      
+       #100ns
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+  
+   endtask
+endclass
+
+ //=========================================================================
+//--------------------UNDERFLOW TEST SEQUENCE------------------
+//=========================================================================
+//Read the monitor register. 
+//Read the result register. 
+//Send traffic. 
+//Read the result register till the system gets empty. 
+//Attempt to read the result register again. 
+
+class error_underflow_sequence extends base_seq;
+//Factory Registration
+   `uvm_object_utils(error_underflow_sequence)
+
+//Declare
+   reg_block m_ral_model;
+   uvm_status_e status;
+
+//Constructor
+   function new(string name="error_underflow_sequence");
+      super.new(name);
+   endfunction
+
+   virtual task pre_body();
+      if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
+         `uvm_fatal("RAL", "Cannot get RAL model from config DB");
+
+   endtask
+
+   virtual task body();
+   
+      my_rand trans2;
+      bit[15:0] reg1_val;
+      bit[15:0] reg2_val;
+      bit[15:0] control_reg_val;
+      bit[24:0] result;
+      bit[24:0] monitor;
+
+     //READ MONITOR REGISTER
+       m_ral_model.monitor.read(status, monitor);
+      `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+        
+     #100ns      
+     //READ RESULT REGISTER
+       m_ral_model.result.read(status, result);
+      `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
+      
+      repeat(3)begin
+      
+      trans2 = my_rand::type_id::create("trans2");
+
+      if (!trans2.randomize()) begin
+        `uvm_error(get_type_name(), "Randomization failed for b2gfifo_item!")
+      end
+      
+      reg1_val = trans2.reg1;
+      reg2_val = trans2.reg2;
+      control_reg_val[0]   = 1'b1;     // start
+      control_reg_val[2:1] = trans2.seq_op;    // addition
+      control_reg_val[15:8] = trans2.seq_id;   // ID example
+      
+     #100ns  
+      //WRITE REGISTER 1
+       m_ral_model.data0.write(status, reg1_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       #50ns
+      //WRITE REGISTER 2
+      m_ral_model.data1.write(status, reg2_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       #50ns
+      //PERFORM AN OPERATION
+      m_ral_model.ctl.write(status, control_reg_val);
+      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
+     end
+     
+      //Wait to make sure the operation is done 
+       #200ns
+    
+	repeat(4)begin
+      //READ RESULT REGISTER
+      m_ral_model.result.read(status, result);
+      `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
+      
+       #300ns
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+  	end
+   endtask
+endclass
+
+//=========================================================================
+//--------------------OVERFLOW TEST SEQUENCE------------------
+//=========================================================================
+//Write on registers 1&2. 
+//Perform an operation. 
+//Repeat till system gets full. 
+//Attempt a valid operation.
+
+class error_overflow_sequence extends base_seq;
+//Factory Registration
+   `uvm_object_utils(error_overflow_sequence)
+
+//Declare
+   reg_block m_ral_model;
+   uvm_status_e status;
+
+//Constructor
+   function new(string name="error_overflow_sequence");
+      super.new(name);
+   endfunction
+
+   virtual task pre_body();
+      if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
+         `uvm_fatal("RAL", "Cannot get RAL model from config DB");
+
+   endtask
+
+   virtual task body();
+   
+      my_rand trans2;
+      bit[15:0] reg1_val;
+      bit[15:0] reg2_val;
+      bit[15:0] control_reg_val;
+      bit[24:0] result;
+      bit[24:0] monitor;
+
+   
+      
+      repeat(9)begin
+      
+      trans2 = my_rand::type_id::create("trans2");
+
+      if (!trans2.randomize()) begin
+        `uvm_error(get_type_name(), "Randomization failed for b2gfifo_item!")
+      end
+      
+      reg1_val = trans2.reg1;
+      reg2_val = trans2.reg2;
+      control_reg_val[0]   = 1'b1;     // start
+      control_reg_val[2:1] = trans2.seq_op;    // addition
+      control_reg_val[15:8] = trans2.seq_id;   // ID example
+      
+       //Wait to make sure the operation is done 
+       #600ns
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+     #100ns  
+      //WRITE REGISTER 1
+       m_ral_model.data0.write(status, reg1_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       #50ns
+      //WRITE REGISTER 2
+      m_ral_model.data1.write(status, reg2_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       #50ns
+      //PERFORM AN OPERATION
+      m_ral_model.ctl.write(status, control_reg_val);
+      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
+     
+     
+  	end
+   endtask
+endclass
+//===========================================================================
+//--------------------------RANDOM TEST SEQUENCE---------------------------
+//=========================================================================
+//Send random traffic(reads and writes). 
+
+class random_sequence extends uvm_sequence#(apb_transaction);
+   `uvm_object_utils(random_sequence)
+   `uvm_declare_p_sequencer(fifo_sequencer)
+//Declare
+// VIRTUAL INTERFACE
+   virtual interfc vintf;
+   reg_block m_ral_model;
+   uvm_status_e status; 
+   int reps;
+   rand bit [`APB_BUS_SIZE-1 : 0] mdata;
+   rand bit [`ADDR_W :0] maddr;
+   rand bit operation;
+  
+  constraint c_addr {maddr inside{0,1,2,3,4};}
+   
+   function new (string name ="");
+      super.new(name);
+   endfunction
+
+
+	
+ virtual task pre_body();
+	 if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
+
+      if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
+         `uvm_fatal("RAL", "Cannot get RAL model from config DB");
+      if (!uvm_config_db#(int)::get( null, "", "reps", reps))
+         `uvm_fatal("CFG", "Cannot get repsfrom config DB")
+   endtask
+   
+virtual task body();
+    repeat(reps)begin
+	 
+	  // Randomize sequence-level variables
+	  if (!this.randomize())
+	    `uvm_fatal(get_name(), "Sequence randomization failed")
+
+	    req = apb_transaction::type_id::create("req");
+
+	    if (!req.randomize() with {
+	      addr == maddr;
+	      write == operation;
+	      data == mdata;
+	    })begin
+	      `uvm_fatal(get_name(), "APB item randomization failed")
+	      end
+	      
+	    start_item(req);
+	    finish_item(req);
+	    get_response(rsp);
+	    `uvm_info(get_name(),
+		      $psprintf("Transaction sent:\n%s", req.sprint()),
+		      UVM_MEDIUM)
+	
+	   
+	  end
+  
+  
+endtask
+endclass : random_sequence
+
+
+//===========================================================================
+//--------------------------RESET TEST SEQUENCE---------------------------
+//=========================================================================
+//Send traffic.
+//Perform a reset.
+//Read the monitor register.
+//Read the result register.
+//Send traffic again.
+
+class reset_sequence extends base_seq;
+   `uvm_object_utils(reset_sequence)
+  
+//Declare
+// VIRTUAL INTERFACE
+   virtual interfc vintf;
+   reg_block m_ral_model;
+   uvm_status_e status; 
+
+//Declare Sequence  
+
+ error_overflow_sequence op_seq;
+   
+   function new (string name ="");
+      super.new(name);
+   endfunction
+
+
+	
+ virtual task pre_body();
+	 if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
+
+      if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
+         `uvm_fatal("RAL", "Cannot get RAL model from config DB");
+
+   endtask
+   
+virtual task body();
+       
+      fork 
+       begin
+     op_seq = error_overflow_sequence::type_id::create("op_seq");
+      if (op_seq == null)
+        `uvm_fatal("TEST", "Failed to create seq")
+      else
+        `uvm_info(get_type_name(), "Sequence created OK", UVM_LOW)
+     
+       op_seq.start(p_sequencer);
+      end
+      begin 
+      #1500ns
+      `uvm_info(get_name(), " Random reset triggered!", UVM_NONE)
+         vintf.rst_n = 0;
+         #40ns;
+         vintf.rst_n = 1;
+         #10ns;
+	 m_ral_model.reset();
+        end
+      join
+      disable fork;
+   endtask
+	
+endclass : reset_sequence
 `endif

@@ -4,13 +4,14 @@
 
 // TODO: * * * Call the imp_decl macro * * *
 `uvm_analysis_imp_decl(_)
-
+`uvm_analysis_imp_decl(_rst_detected)
 
 class alu_scoreboard extends uvm_scoreboard;
    `uvm_component_utils(alu_scoreboard)
 
 // TODO: * * * Declare the analysis import for received data items * * * 
 	uvm_analysis_imp#(apb_transaction, alu_scoreboard) alu_analysis_export;
+    uvm_analysis_imp_rst_detected#(bit, alu_scoreboard) rst_imp;
 
    // INPUT REGISTERS
    bit [15:0] reg1;
@@ -58,15 +59,7 @@ class alu_scoreboard extends uvm_scoreboard;
    bit [1:0] monitor_reg;
 
    int monitoraki;
-       
-
-/////reg addresses
- /*  bit [1:0]  control_reg_addr;
-   bit [1:0]  data_0_reg_addr;
-   bit [1:0]  data_1_reg_addr;
-   bit [1:0]  result_reg_addr;
-   bit [2:0]  monitor_reg_addr;*/
-
+   
    // ---------------------------------------------------------
    // VIRTUAL INTERFACE
    virtual interfc vintf;
@@ -82,6 +75,7 @@ class alu_scoreboard extends uvm_scoreboard;
 
 	// Declare the write function //
 	extern function void write(apb_transaction pkt);
+	extern function void write_rst_detected(bit reset_bit);
     extern function void operation_make();
 	extern function void do_write(apb_transaction pkt);
     extern function void do_read(apb_transaction pkt);
@@ -108,6 +102,7 @@ endfunction
 function void alu_scoreboard::build_phase(uvm_phase phase);
    super.build_phase(phase);
 	alu_analysis_export = new("alu_analysis_export", this);
+	rst_imp = new("rst_imp", this);
    if(!uvm_config_db#(virtual interfc)::get(this,"","interfc", vintf))
       `uvm_fatal(get_type_name(), "Unable to get virtual interface")
 endfunction
@@ -117,7 +112,10 @@ endfunction
 // RUN PHASE 
 // ---------------------------------------------------------
 task alu_scoreboard::run_phase(uvm_phase phase);
-    forever begin
+
+  `uvm_info("run_phase", $sformatf("inside the run phase"), UVM_NONE)
+  
+    /*forever begin
         @(negedge vintf.rst_n);
         fifo_in_queue.delete();
         expected_queue.delete();
@@ -127,7 +125,7 @@ task alu_scoreboard::run_phase(uvm_phase phase);
         alu_mul_busy = 0;
         expected_error = 0;
         @(posedge vintf.rst_n);
-    end
+    end*/
 endtask
 
 // =========================================================
@@ -168,7 +166,7 @@ endfunction
 function bit alu_scoreboard::input_fifo_full();
 	 	return (fifo_in_count == FIFO_IN_DEPTH);
 endfunction 
-
+//-------------------------------------------------------------
 
 function void alu_scoreboard::operation_make();
 
@@ -335,6 +333,7 @@ endfunction
 function void alu_scoreboard::do_read(apb_transaction pkt);
    alu_result_t exp;
    int idx;
+   int found_res;
    case(pkt.addr)
 
    // ---------------------------------------------------
@@ -343,15 +342,16 @@ function void alu_scoreboard::do_read(apb_transaction pkt);
    3'b011: begin
     //`uvm_info("MONITORAKI", $sformatf(" count=%d", fifo_in_count), UVM_LOW)
      // wait until output FIFO has somethingE
-     if(fifo_out_count == 0)begin
+     if(fifo_out_count <= 0)begin
       expected_error =1;
       if (pkt.slv_err !== expected_error)
         `uvm_error("SCOREBOARD",$sformatf("Mismatch  FIFO_OUT EMPTY with slv_error=%0h expected=%0h",pkt.slv_err,expected_error));
        end
-     else
+     else begin
         expected_error = 0;
         if (pkt.slv_err !== expected_error)
             `uvm_error("SCOREBOARD WO ADDRESSES",$sformatf("Mismatch slv_error=%0h expected=%0h",pkt.slv_err,expected_error));
+         found_res = 0;
          // search for matching ID
          for(idx=0; idx < expected_queue.size(); idx++) begin
               //  `uvm_info("SCORE", $sformatf("size=%d", pkt.data[24:17]), UVM_LOW)
@@ -361,12 +361,16 @@ function void alu_scoreboard::do_read(apb_transaction pkt);
                expected_queue.delete(idx);
                `uvm_info("SCORE", $sformatf("size=%d", exp.id), UVM_LOW)
                fifo_out_count--;
+               found_res = 1;
                if(fifo_in_count !=0) 
                 operation_make();
                break;
             end
          end
-
+	//Check if I found result 
+	if(!found_res)begin
+	`uvm_error("SCOREBOARD",$sformatf("Did not find matching data"));
+	end
         exp_data = {7'b0, exp.id, exp.carry_out, exp.result};
         `uvm_info("SCORE", $sformatf("ID=%d carry = %h result = %h", exp.id, exp.carry_out, exp.result), UVM_LOW)
         monitoraki = fifo_in_count + fifo_out_count ; 
@@ -377,7 +381,7 @@ function void alu_scoreboard::do_read(apb_transaction pkt);
             $sformatf("Expected=0x%0h Actual=0x%0h",
                       exp_data, pkt.data))
     end
-
+end
    // ---------------------------------------------------
    // MONITOR REGISTER (addr 4)
    // ---------------------------------------------------
@@ -387,7 +391,7 @@ function void alu_scoreboard::do_read(apb_transaction pkt);
             `uvm_error("SCOREBOARD WO ADDRESSES",$sformatf("Mismatch slv_error=%0h expected=%0h",pkt.slv_err,expected_error));
 	    exp_monitor[0] = (fifo_out_count == 0); // empty
       // `uvm_info("MONITORAKI",$sformatf("Expected count=%b", exp_monitor[0]),UVM_LOW)
-      exp_monitor[1] = (input_fifo_full()); // full
+      exp_monitor[1] = (fifo_out_count == 4); // full
     
     
     // ===== COMPARE MONITOR STATUS =====
@@ -417,22 +421,27 @@ function void alu_scoreboard::do_read(apb_transaction pkt);
     
 endfunction
 
-/*function void alu_scoreboard::reg_address();
-   //The reg_address function is called to get the address of the register from the reg_model.
-   control_reg_addr = m_ral_model.ctl.get_address();
-   data_0_reg_addr = m_ral_model.data0.get_address();
-   data_1_reg_addr = m_ral_model.data1.get_address();
-   monitor_reg_addr = m_ral_model.monitor.get_address();
-   result_reg_addr = m_ral_model.result.get_address();
+function void alu_scoreboard::write_rst_detected(bit reset_bit);
+  `uvm_info("SCBD", $sformatf("MID LIFE ",), UVM_NONE)
 
-   `uvm_info("write", $sformatf("control_reg_addr = %0d", control_reg_addr), UVM_NONE)
-   `uvm_info("write", $sformatf("data_0_reg_addr= %0d", data_0_reg_addr), UVM_NONE)
-   `uvm_info("write", $sformatf("data_1_reg_addr= %0d", data_1_reg_addr), UVM_NONE)
-   `uvm_info("write", $sformatf("result_reg_addr = %0d", result_reg_addr), UVM_NONE)
-   `uvm_info("write", $sformatf("monitor_reg_addr = %0d", monitor_reg_addr), UVM_NONE)
+  if(reset_bit == 1) begin
+     `uvm_info("SCBD", $sformatf("reset detected"), UVM_NONE)
+     `uvm_info("SCBD", $sformatf("MID LIFE 2",), UVM_NONE)
+	 fifo_in_queue.delete();
+     expected_queue.delete();
+     fifo_in_count  = 0;
+     fifo_out_count = 0;
+     alu_add_busy = 0;
+     alu_mul_busy = 0;
+     expected_error = 0;
+  end
+
+ // cvg_obj.mid_rst_cg.sample();
 
 endfunction
-*/
+
+
+
 
 `endif
 

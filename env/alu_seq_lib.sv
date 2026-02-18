@@ -67,13 +67,13 @@ class sanity_operation_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+       repeat (10) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (10) @(posedge  vintf.clk);
       //PERFORM A VALID OPERATION / Write to control register
       control_reg_val[0]   = 1'b1;     // start
       control_reg_val[2:1] = 2'b10;    // valid operation
@@ -83,7 +83,7 @@ class sanity_operation_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-      repeat(31)begin
+      repeat(40)begin
 	    @(posedge vintf.clk);
 	   end
 	   
@@ -108,6 +108,7 @@ class sanity_no_start_operation_sequence extends base_seq;
    `uvm_object_utils(sanity_no_start_operation_sequence)
 
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -117,6 +118,8 @@ class sanity_no_start_operation_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -133,13 +136,13 @@ class sanity_no_start_operation_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+       repeat (10) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (10) @(posedge  vintf.clk);
       //PERFORM A VALID OPERATION / Write to control register
       control_reg_val[0]   = 1'b0;     // start
       control_reg_val[2:1] = 2'b01;    // valid operation
@@ -149,7 +152,7 @@ class sanity_no_start_operation_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #200ns
+        repeat (33) @(posedge  vintf.clk);
 
       //READ RESULT REGISTER
       m_ral_model.result.read(status, result);
@@ -172,6 +175,7 @@ class sanity_monitor_register_sequence extends base_seq;
    `uvm_object_utils(sanity_monitor_register_sequence)
 
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -181,6 +185,8 @@ class sanity_monitor_register_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -204,13 +210,13 @@ class sanity_monitor_register_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (5) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (5) @(posedge  vintf.clk);
       //PERFORM A VALID OPERATION / Write to control register
       control_reg_val[0]   = 1'b1;     // start
       control_reg_val[2:1] = 2'b01;    // valid operation
@@ -220,7 +226,7 @@ class sanity_monitor_register_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #200ns
+        repeat (35) @(posedge  vintf.clk);
 
       //READ RESULT REGISTER
       m_ral_model.monitor.read(status, monitor);
@@ -245,6 +251,7 @@ class functional_add_waitstate_sequence extends base_seq;
    `uvm_object_utils(functional_add_waitstate_sequence)
 
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -254,6 +261,8 @@ class functional_add_waitstate_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -272,13 +281,13 @@ class functional_add_waitstate_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (5) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (5) @(posedge  vintf.clk);
       //PERFORM A VALID OPERATION / Write to control register
       control_reg_val[0]   = 1'b1;     // start
       control_reg_val[2:1] = 2'b01;    // addition
@@ -288,7 +297,7 @@ class functional_add_waitstate_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #200ns
+        repeat (35) @(posedge  vintf.clk);
 
       //READ RESULT REGISTER
       m_ral_model.result.read(status, result);
@@ -313,6 +322,7 @@ class functional_no_start_exec_sequence extends base_seq;
    `uvm_object_utils(functional_no_start_exec_sequence)
 
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -322,6 +332,8 @@ class functional_no_start_exec_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -338,13 +350,13 @@ class functional_no_start_exec_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (5) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (5) @(posedge  vintf.clk);
       //PERFORM AN ADDITION/ Write to control register
       control_reg_val[0]   = 1'b0;     // start
       control_reg_val[2:1] = 2'b01;    // ADD
@@ -354,7 +366,7 @@ class functional_no_start_exec_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #200ns
+        repeat (35) @(posedge  vintf.clk);
       //PERFORM A MULTIPLICATION/ Write to control register
       control_reg_val[0]   = 1'b0;     // start
       control_reg_val[2:1] = 2'b10;    // MUL
@@ -364,7 +376,7 @@ class functional_no_start_exec_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #200ns
+        repeat (35) @(posedge  vintf.clk);
 
       //READ RESULT REGISTER
       m_ral_model.result.read(status, result);
@@ -386,6 +398,7 @@ class functional_sequence_order_sequence extends base_seq;
    `uvm_object_utils(functional_sequence_order_sequence)
 
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -395,6 +408,8 @@ class functional_sequence_order_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -414,13 +429,13 @@ class functional_sequence_order_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-      // #50ns
+       repeat (5) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+       repeat (5) @(posedge  vintf.clk);
       //1.PERFORM A VALID OPERATION / Write to control register
       control_reg_val[0]   = 1'b1;     // start
       control_reg_val[2:1] = 2'b01;    // ADD
@@ -429,7 +444,7 @@ class functional_sequence_order_sequence extends base_seq;
       m_ral_model.ctl.write(status, control_reg_val);
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
-        #50ns
+       repeat (33) @(posedge  vintf.clk);
       //2.PERFORM A VALID OPERATION / Write to control register
       control_reg_val[0]   = 1'b1;     // start
       control_reg_val[2:1] = 2'b10;    // MUL
@@ -439,7 +454,7 @@ class functional_sequence_order_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #100ns
+       repeat (33) @(posedge  vintf.clk);
 
        reg1_val = 16'h1;//16'h422B;
        reg2_val = 16'h2;//16'hCCA2;
@@ -447,13 +462,14 @@ class functional_sequence_order_sequence extends base_seq;
       //WRITE REGISTER 1
       m_ral_model.data0.write(status, reg1_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
-
+      
+ 		repeat (5) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (5) @(posedge  vintf.clk);
       //3.PERFORM A VALID OPERATION / Write to control register
       control_reg_val[0]   = 1'b1;     // start
       control_reg_val[2:1] = 2'b10;    // MUL
@@ -462,7 +478,7 @@ class functional_sequence_order_sequence extends base_seq;
       m_ral_model.ctl.write(status, control_reg_val);
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
-      #50ns
+       repeat (35) @(posedge  vintf.clk);
       //4.PERFORM A VALID OPERATION / Write to control register
       control_reg_val[0]   = 1'b1;     // start
       control_reg_val[2:1] = 2'b01;    // ADD
@@ -472,7 +488,7 @@ class functional_sequence_order_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #1000ns
+        repeat (35) @(posedge  vintf.clk);
 
         //READ MONITOR REGISTER
       m_ral_model.monitor.read(status, monitor);
@@ -480,42 +496,30 @@ class functional_sequence_order_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("RESULT = %h", monitor), UVM_MEDIUM)
 
         //Wait to make sure the operation is done 
-       #100ns
-
-              //Wait to make sure the operation is done 
-     /*  #50ns
-      //PERFORM A VALID OPERATION / Write to control register
-      control_reg_val[0]   = 1'b1;     // start
-      control_reg_val[2:1] = 2'b10;    // ADD
-      control_reg_val[15:8] = 8'h1B;   // ID example
-
-      m_ral_model.ctl.write(status, control_reg_val);
-      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)*/
-
-      //Wait to make sure the operation is done 
-       #500ns
+        repeat (35) @(posedge  vintf.clk);
 
       //1.READ RESULT REGISTER
       m_ral_model.result.read(status, result);
 
       `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
-
+ 		repeat (10) @(posedge  vintf.clk);
+ 		
       //2.READ RESULT REGISTER
       m_ral_model.result.read(status, result);
 
       `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
-
+ 		repeat (35) @(posedge  vintf.clk);
       //3.READ RESULT REGISTER
       m_ral_model.result.read(status, result);
 
       `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
-
+ 		repeat (10) @(posedge  vintf.clk);
          //READ MONITOR REGISTER
       m_ral_model.monitor.read(status, monitor);
 
       `uvm_info("SEQ", $sformatf("RESULT = %h", monitor), UVM_MEDIUM)
 
-
+ 		repeat (33) @(posedge  vintf.clk);
       //4.READ RESULT REGISTER
       m_ral_model.result.read(status, result);
 
@@ -565,6 +569,7 @@ class edge_case_sequence extends base_seq;
    `uvm_object_utils(edge_case_sequence)
 
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -574,6 +579,8 @@ class edge_case_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -598,31 +605,7 @@ class edge_case_sequence extends base_seq;
       m_ral_model.monitor.read(status, monitor);
         `uvm_info("SEQ", $sformatf("RESULT = %h", monitor), UVM_MEDIUM)
 
-    /*  //WRITE REGISTER 1
-      m_ral_model.data0.write(status, reg1_val);
-      `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
-      //WRITE REGISTER 2
-      m_ral_model.data1.write(status, reg2_val);
-      `uvm_info("SEQ", $sformatf("Wrote DATA2 = %h", reg2_val), UVM_LOW)
-
-      //Wait to make sure the operation is done 
-       #50ns
-      //PERFORM A VALID OPERATION / Write to control register
-      control_reg_val[0]   = 1'b1;     // start
-      control_reg_val[2:1] = 2'b01;    // addition
-      control_reg_val[15:8] = 8'b11000100;   // ID example
-
-      m_ral_model.ctl.write(status, control_reg_val);
-      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
-
-      //Wait to make sure the operation is done 
-       #50ns
-
-       //READ MONITOR REGISTER 
-        m_ral_model.monitor.read(status, monitor);
-        `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM)
-*/
-      repeat(i) begin
+ repeat(i) begin
 
       trans = my_rand::type_id::create("trans");
 
@@ -635,17 +618,17 @@ class edge_case_sequence extends base_seq;
       control_reg_val[0]   = 1'b1;     // start
       control_reg_val[2:1] = trans.seq_op;    // addition
       control_reg_val[15:8] = trans.seq_id;   // ID example
-
+		repeat (5) @(posedge  vintf.clk);
       //WRITE REGISTER 1
       m_ral_model.data0.write(status, reg1_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
-    #50ns
+     repeat (5) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
     
-    #100ns
+     repeat (5) @(posedge  vintf.clk);
       //PERFORM A VALID OPERATION / Write to control register
       m_ral_model.ctl.write(status, control_reg_val);
         j++ ;
@@ -653,26 +636,23 @@ class edge_case_sequence extends base_seq;
   
         
       //Wait to make sure the operation is done 
-      #600ns
+       repeat (40) @(posedge  vintf.clk);
 
       //READ MONITOR REGISTER 
       m_ral_model.monitor.read(status, monitor);
-      `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM)
+      `uvm_info("SEQ", $sformatf("MONITOR STATUS AFTER WRITE = %h", monitor), UVM_MEDIUM)
 
-//READ //RESULT REGISTER
-        //    m_ral_model.result.read(status, result);
-        //    `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
       end 
     
         repeat(i) begin
-         #50ns
+          repeat (10) @(posedge  vintf.clk);
         //READ RESULT REGISTER
             m_ral_model.result.read(status, result);
             `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
-        #600ns
+         repeat (40) @(posedge  vintf.clk);
          //READ MONITOR REGISTER
              m_ral_model.monitor.read(status, monitor);
-            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS AFTER READ = %h", monitor), UVM_MEDIUM) 
         end
    endtask
 endclass
@@ -691,6 +671,7 @@ class error_invalid_write_address_sequence extends uvm_sequence#(apb_transaction
    `uvm_object_utils(error_invalid_write_address_sequence)
    `uvm_declare_p_sequencer(fifo_sequencer)
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -702,8 +683,8 @@ class error_invalid_write_address_sequence extends uvm_sequence#(apb_transaction
    bit[15:0] control_reg_val;
    bit[24:0] monitor;
 
- //  constraint addr_c {maddr inside {3'b011, 3'b100, 3'b101, 3'b110, 3'b111};}
-   constraint addr_c {maddr inside {3'b011, 3'b101};}
+   constraint addr_c {maddr inside {3'b011, 3'b100, 3'b101, 3'b110, 3'b111};}
+  // constraint addr_c {maddr inside {3'b011, 3'b101};}
    constraint mdata_c {
   	mdata[0] == 0;                 
   	mdata[2:1] inside {2'b01, 2'b10};
@@ -714,13 +695,15 @@ class error_invalid_write_address_sequence extends uvm_sequence#(apb_transaction
    endfunction
 
  virtual task pre_body();
+ 		if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
    endtask
    virtual task body();
   `uvm_info(get_name(), "Inside seq body", UVM_DEBUG)
-  repeat (3) begin
+  repeat (20) begin
   // Randomize sequence-level variables
   if (!this.randomize())
     `uvm_fatal(get_name(), "Sequence randomization failed")
@@ -732,9 +715,9 @@ class error_invalid_write_address_sequence extends uvm_sequence#(apb_transaction
   m_ral_model.data1.write(status, reg2_val, .parent(this));
   `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
-
     req = apb_transaction::type_id::create("req");
-
+    ///Deactivate address constraint  
+		req.c_addr.constraint_mode(0);
     if (!req.randomize() with {
       addr == maddr;
       data == mdata;
@@ -749,7 +732,8 @@ class error_invalid_write_address_sequence extends uvm_sequence#(apb_transaction
               $psprintf("Transaction sent:\n%s", req.sprint()),
               UVM_MEDIUM)
   end
-   #100ns
+  
+   repeat (33) @(posedge  vintf.clk);
          //READ MONITOR REGISTER
              m_ral_model.monitor.read(status, monitor);
             `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
@@ -767,6 +751,7 @@ class error_invalid_read_address_sequence extends uvm_sequence#(apb_transaction)
    `uvm_object_utils(error_invalid_read_address_sequence)
    `uvm_declare_p_sequencer(fifo_sequencer)
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -790,6 +775,8 @@ class error_invalid_read_address_sequence extends uvm_sequence#(apb_transaction)
    endfunction
 
  virtual task pre_body();
+ 		if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -804,14 +791,14 @@ class error_invalid_read_address_sequence extends uvm_sequence#(apb_transaction)
   // RAL writes
   m_ral_model.data0.write(status, reg1_val, .parent(this));
   `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
-
+ repeat (5) @(posedge  vintf.clk);
   m_ral_model.data1.write(status, reg2_val, .parent(this));
   `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
-   
+   repeat (5) @(posedge  vintf.clk); 
   m_ral_model.ctl.write(status, control_reg_val); 
    `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
    
-   #200ns
+  repeat (35) @(posedge  vintf.clk);
          //READ MONITOR REGISTER
              m_ral_model.monitor.read(status, monitor);
             `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
@@ -823,7 +810,8 @@ class error_invalid_read_address_sequence extends uvm_sequence#(apb_transaction)
 
 
     req = apb_transaction::type_id::create("req");
-
+      ///Deactivate address constraint  
+		req.c_addr.constraint_mode(0);
     if (!req.randomize() with {
       addr == maddr;
       write == 0;
@@ -854,6 +842,7 @@ class error_invalid_ctrl_data_sequence extends base_seq;
    `uvm_object_utils(error_invalid_ctrl_data_sequence)
 
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -863,6 +852,8 @@ class error_invalid_ctrl_data_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -880,13 +871,13 @@ class error_invalid_ctrl_data_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+        repeat (5) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+       repeat (5) @(posedge  vintf.clk);
       //PERFORM AN ADDITION/ Write to control register
       control_reg_val[0]   = 1'b0;     // start
       control_reg_val[2:1] = 2'b11;    // INVALID
@@ -896,7 +887,7 @@ class error_invalid_ctrl_data_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #200ns
+        repeat (35) @(posedge  vintf.clk);
       //PERFORM A MULTIPLICATION/ Write to control register
       control_reg_val[0]   = 1'b0;     // start
       control_reg_val[2:1] = 2'b00;    // INVALID
@@ -906,13 +897,13 @@ class error_invalid_ctrl_data_sequence extends base_seq;
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #200ns
+        repeat (35) @(posedge  vintf.clk);
 
       //READ RESULT REGISTER
       m_ral_model.result.read(status, result);
       `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
       
-       #100ns
+        repeat (35) @(posedge  vintf.clk);
          //READ MONITOR REGISTER
              m_ral_model.monitor.read(status, monitor);
             `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
@@ -934,6 +925,7 @@ class error_underflow_sequence extends base_seq;
    `uvm_object_utils(error_underflow_sequence)
 
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -943,6 +935,8 @@ class error_underflow_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -961,7 +955,7 @@ class error_underflow_sequence extends base_seq;
        m_ral_model.monitor.read(status, monitor);
       `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
         
-     #100ns      
+    repeat (20) @(posedge  vintf.clk);   
      //READ RESULT REGISTER
        m_ral_model.result.read(status, result);
       `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
@@ -980,33 +974,33 @@ class error_underflow_sequence extends base_seq;
       control_reg_val[2:1] = trans2.seq_op;    // addition
       control_reg_val[15:8] = trans2.seq_id;   // ID example
       
-     #100ns  
+     repeat (10) @(posedge  vintf.clk);
       //WRITE REGISTER 1
        m_ral_model.data0.write(status, reg1_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+    repeat (10) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+       repeat (10) @(posedge  vintf.clk);
       //PERFORM AN OPERATION
       m_ral_model.ctl.write(status, control_reg_val);
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
      end
      
       //Wait to make sure the operation is done 
-       #200ns
+    repeat (40) @(posedge  vintf.clk);
     
 	repeat(4)begin
       //READ RESULT REGISTER
       m_ral_model.result.read(status, result);
       `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
       
-       #300ns
+    repeat (20) @(posedge  vintf.clk);
          //READ MONITOR REGISTER
              m_ral_model.monitor.read(status, monitor);
             `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
@@ -1027,6 +1021,7 @@ class error_overflow_sequence extends base_seq;
    `uvm_object_utils(error_overflow_sequence)
 
 //Declare
+	virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -1036,6 +1031,8 @@ class error_overflow_sequence extends base_seq;
    endfunction
 
    virtual task pre_body();
+  		if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
       if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
          `uvm_fatal("RAL", "Cannot get RAL model from config DB");
 
@@ -1067,23 +1064,23 @@ class error_overflow_sequence extends base_seq;
       control_reg_val[15:8] = trans2.seq_id;   // ID example
       
        //Wait to make sure the operation is done 
-       #600ns
+    repeat (33) @(posedge  vintf.clk);
          //READ MONITOR REGISTER
              m_ral_model.monitor.read(status, monitor);
             `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
-     #100ns  
+    repeat (10) @(posedge  vintf.clk);
       //WRITE REGISTER 1
        m_ral_model.data0.write(status, reg1_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+   repeat (5) @(posedge  vintf.clk);
       //WRITE REGISTER 2
       m_ral_model.data1.write(status, reg2_val);
       `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
 
       //Wait to make sure the operation is done 
-       #50ns
+   repeat (5) @(posedge  vintf.clk);
       //PERFORM AN OPERATION
       m_ral_model.ctl.write(status, control_reg_val);
       `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
@@ -1130,7 +1127,7 @@ class random_sequence extends uvm_sequence#(apb_transaction);
    
 virtual task body();
     repeat(reps)begin
-	 
+	 repeat (33) @(posedge  vintf.clk);
 	  // Randomize sequence-level variables
 	  if (!this.randomize())
 	    `uvm_fatal(get_name(), "Sequence randomization failed")
@@ -1210,7 +1207,7 @@ virtual task body();
        op_seq.start(p_sequencer);
       end
       begin 
-      #1500ns
+       repeat (200) @(posedge  vintf.clk);
       `uvm_info(get_name(), " Random reset triggered!", UVM_NONE)
          vintf.rst_n = 0;
          #40ns;
@@ -1223,4 +1220,235 @@ virtual task body();
    endtask
 	
 endclass : reset_sequence
+
+
+//===========================================================================
+//--------------------------CORNER VALUES TEST SEQUENCE---------------------
+//=========================================================================
+//Set data0 and data1 reg with the min and max values.
+//Perform addition(checks add to zero)
+//Set one operand to 1 
+//Perform mul (checks identity mul)
+
+
+class min_max_sequence extends base_seq;
+//Factory Registration
+   `uvm_object_utils(min_max_sequence)
+
+//Declare
+	virtual interfc vintf;
+   reg_block m_ral_model;
+   uvm_status_e status;
+
+//Constructor
+   function new(string name="min_max_sequence");
+      super.new(name);
+   endfunction
+
+   virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
+      if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
+         `uvm_fatal("RAL", "Cannot get RAL model from config DB");
+
+   endtask
+
+   virtual task body();
+   
+      my_rand trans2;
+      bit[15:0] reg1_val;
+      bit[15:0] reg2_val;
+      bit[15:0] control_reg_val;
+      bit[24:0] result;
+      bit[24:0] monitor;
+
+    
+        
+      reg1_val = 16'h0;
+      reg2_val =  16'hFFFF;
+      control_reg_val[0]   = 1'b1;    // start
+      control_reg_val[2:1] = 2'b01;    // addition
+      control_reg_val[15:8] = 8'b10001111;  // ID example
+      
+     repeat (10) @(posedge  vintf.clk);
+      //WRITE REGISTER 1
+       m_ral_model.data0.write(status, reg1_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+    repeat (10) @(posedge  vintf.clk);
+      //WRITE REGISTER 2
+      m_ral_model.data1.write(status, reg2_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       repeat (10) @(posedge  vintf.clk);
+      //PERFORM AN OPERATION
+      m_ral_model.ctl.write(status, control_reg_val);
+      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
+  
+      //Wait to make sure the operation is done 
+    repeat (40) @(posedge  vintf.clk);
+   
+      //READ RESULT REGISTER
+      m_ral_model.result.read(status, result);
+      `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
+      
+    repeat (20) @(posedge  vintf.clk);
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+   ///////////////////////////         
+     reg2_val = 16'h0;
+      reg1_val =  16'hFFFF;
+      control_reg_val[0]   = 1'b1;    // start
+      control_reg_val[2:1] = 2'b01;    // addition
+      control_reg_val[15:8] = 8'b10101111;  // ID example
+      
+     repeat (10) @(posedge  vintf.clk);
+      //WRITE REGISTER 1
+       m_ral_model.data0.write(status, reg1_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+    repeat (10) @(posedge  vintf.clk);
+      //WRITE REGISTER 2
+      m_ral_model.data1.write(status, reg2_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       repeat (10) @(posedge  vintf.clk);
+      //PERFORM AN OPERATION
+      m_ral_model.ctl.write(status, control_reg_val);
+      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
+  
+      //Wait to make sure the operation is done 
+    repeat (40) @(posedge  vintf.clk);
+   
+      //READ RESULT REGISTER
+      m_ral_model.result.read(status, result);
+      `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
+      
+    repeat (20) @(posedge  vintf.clk);
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM)       
+     ///////////////////////////         
+     reg2_val = 16'h1;
+      reg1_val =  16'hFFFF;
+      control_reg_val[0]   = 1'b1;    // start
+      control_reg_val[2:1] = 2'b10;    // addition
+      control_reg_val[15:8] = 8'b10001011;  // ID example
+      
+     repeat (10) @(posedge  vintf.clk);
+      //WRITE REGISTER 1
+       m_ral_model.data0.write(status, reg1_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+    repeat (10) @(posedge  vintf.clk);
+      //WRITE REGISTER 2
+      m_ral_model.data1.write(status, reg2_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       repeat (10) @(posedge  vintf.clk);
+      //PERFORM AN OPERATION
+      m_ral_model.ctl.write(status, control_reg_val);
+      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
+  
+      //Wait to make sure the operation is done 
+    repeat (40) @(posedge  vintf.clk);
+   
+      //READ RESULT REGISTER
+      m_ral_model.result.read(status, result);
+      `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
+      
+    repeat (20) @(posedge  vintf.clk);
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM)       
+          
+  
+   endtask
+endclass
+
+//===========================================================================
+//--------------------------HALF DIVISION CHECK TEST SEQUENCE---------------------
+//=========================================================================
+//Set data0 and data1 reg with values greater than FF.
+//Perform mul
+
+class half_div_sequence extends base_seq;
+//Factory Registration
+   `uvm_object_utils(half_div_sequence)
+
+//Declare
+	virtual interfc vintf;
+   reg_block m_ral_model;
+   uvm_status_e status;
+
+//Constructor
+   function new(string name="half_div_sequence");
+      super.new(name);
+   endfunction
+
+   virtual task pre_body();
+   	if(!uvm_config_db#(virtual interfc)::get(null,"","interfc", vintf))
+			  `uvm_fatal(get_type_name(), "Unable to get virtual interface")
+      if(!uvm_config_db #(reg_block)::get(null, "", "m_ral_model", m_ral_model))
+         `uvm_fatal("RAL", "Cannot get RAL model from config DB");
+
+   endtask
+
+   virtual task body();
+   
+      my_rand trans2;
+      bit[15:0] reg1_val;
+      bit[15:0] reg2_val;
+      bit[15:0] control_reg_val;
+      bit[24:0] result;
+      bit[24:0] monitor;
+
+    
+        
+      reg1_val = 16'hFF4;
+      reg2_val =  16'hFFB4;
+      control_reg_val[0]   = 1'b1;    // start
+      control_reg_val[2:1] = 2'b10;    // addition
+      control_reg_val[15:8] = 8'b10001111;  // ID example
+      
+     repeat (10) @(posedge  vintf.clk);
+      //WRITE REGISTER 1
+       m_ral_model.data0.write(status, reg1_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+    repeat (10) @(posedge  vintf.clk);
+      //WRITE REGISTER 2
+      m_ral_model.data1.write(status, reg2_val);
+      `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
+
+      //Wait to make sure the operation is done 
+       repeat (10) @(posedge  vintf.clk);
+      //PERFORM AN OPERATION
+      m_ral_model.ctl.write(status, control_reg_val);
+      `uvm_info("SEQ", $sformatf("Wrote CONTROL = %h", control_reg_val), UVM_LOW)
+  
+      //Wait to make sure the operation is done 
+    repeat (40) @(posedge  vintf.clk);
+   
+      //READ RESULT REGISTER
+      m_ral_model.result.read(status, result);
+      `uvm_info("SEQ", $sformatf("RESULT = %h", result), UVM_MEDIUM)
+      
+    repeat (20) @(posedge  vintf.clk);
+         //READ MONITOR REGISTER
+             m_ral_model.monitor.read(status, monitor);
+            `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
+            
+    endtask
+endclass
+           
+//=========================================================================
 `endif

@@ -134,7 +134,7 @@ class monitor_reg extends uvm_reg;
  	this.monitor = uvm_reg_field::type_id::create("monitor"); 
 
  //Field configuration(parent, size, lsb_pos, access, volatile, reset, has_reset, is_rand, individually_accessible);
-	this.monitor.configure(this, 25, 0, "RO", 0, 25'h0, 1, 1, 1);
+	this.monitor.configure(this, 25, 0, "RO", 0, 25'h0, 1, 1, 1);//////allagh reset, k fields, k size
   endfunction
 endclass
 

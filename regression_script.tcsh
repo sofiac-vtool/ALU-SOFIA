@@ -21,11 +21,11 @@ echo "====================" >> $SUMMARY_FILE
 
 
 # Array of test names
-set TESTNAMES = (alu_base_test alu_empty_fifo_out_test alu_full_fifo_in_test alu_read_from_write_test alu_reset_test alu_write_to_read_reg apb_address_test)
+set TESTNAMES = ( base_test sanity_operation_test sanity_no_start_operation_test sanity_monitor_register_test functional_add_waitstate_test functional_no_start_exec_test functional_sequence_order_test error_invalid_write_address_test error_invalid_read_address_test error_invalid_ctrl_data_test error_underflow_test error_overflow_test random_test reset_test min_max_test edge_case_test half_div_test)
 #set TESTNAMES = (alu_base_test)
 
 # Number of times to run each test
-set N = 1
+set N = 10
 
 @ total_tests = 0
 

@@ -26,6 +26,8 @@ package alu_test_pkg;
    `include "random_test.sv"
    `include "stress_test.sv"
    `include "reset_test.sv"
+   `include "min_max_test.sv"
+   `include "half_div_test.sv"
 
 endpackage
 `endif

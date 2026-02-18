@@ -12,11 +12,15 @@ class apb_transaction extends uvm_sequence_item;
    logic  slv_err;
    logic wait_states;
    logic timeout;
+   bit overflow;
+   bit underflow;
 
    constraint c_addr {addr inside{0,1,2,3,4};}
 
    function new(string name = "");
       super.new (name);
+      overflow = 0;
+      underflow = 0;
    endfunction
 
 endclass: apb_transaction

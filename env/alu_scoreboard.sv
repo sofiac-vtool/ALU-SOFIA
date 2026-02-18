@@ -5,7 +5,6 @@
 // TODO: * * * Call the imp_decl macro * * *
 `uvm_analysis_imp_decl(_)
 `uvm_analysis_imp_decl(_rst_detected)
-
 class alu_scoreboard extends uvm_scoreboard;
    `uvm_component_utils(alu_scoreboard)
 
@@ -64,7 +63,8 @@ class alu_scoreboard extends uvm_scoreboard;
    // VIRTUAL INTERFACE
    virtual interfc vintf;
    reg_block   m_ral_model;
-
+  //Coverage Inst
+  	alu_coverage cov;
    // ---------------------------------------------------------
    //Extern Functions
 	
@@ -103,6 +103,7 @@ function void alu_scoreboard::build_phase(uvm_phase phase);
    super.build_phase(phase);
 	alu_analysis_export = new("alu_analysis_export", this);
 	rst_imp = new("rst_imp", this);
+	cov = new();
    if(!uvm_config_db#(virtual interfc)::get(this,"","interfc", vintf))
       `uvm_fatal(get_type_name(), "Unable to get virtual interface")
 endfunction
@@ -136,6 +137,18 @@ function void alu_scoreboard::write(apb_transaction pkt);
   $sformatf("SB GOT pkt: write=%0b addr=%0h data=%0h",
             pkt.write, pkt.addr, pkt.data),
   UVM_LOW)
+  
+  //--------COVERAGE------------
+  cov.write = pkt.write;
+  cov.addr = pkt.addr;
+  cov.data = pkt.data;
+  cov.slv_err = pkt.slv_err;
+  cov.overflow = 0;
+  cov.underflow = 0;
+  cov.apb_transaction_cg.sample();
+  cov.wdata_bit_toggle_cg.sample();
+  
+  //-----------------------------
    // If packet is WRITE operation
 
    if(pkt.write) begin         
@@ -245,13 +258,22 @@ function void alu_scoreboard::do_write(apb_transaction pkt);
      start_bit = pkt.data[0];
      operation = pkt.data[2:1];
      req_id    = pkt.data[15:8];
-
+     //-------------------COVERAGE-------------------------
+     	cov.start_bit = start_bit;
+     	cov.operation = operation;
+     	cov.id =req_id;
+     	cov.data0 = reg1;
+     	cov.data1 = reg2;
+     	//----------------------------------------------------
      if(start_bit) begin
         // -------------------------------
         // CHECK TOTAL CAPACITY 
         // -------------------------------
         if(input_fifo_full()) begin
            `uvm_info("SCOREBOARD", "SYSTEM FULL,cannot accept new operation", UVM_LOW)
+           //----COVERAGE---------------------------
+           cov.overflow =1;
+           //---------------------------------------
             expected_error = 1;
              if (pkt.slv_err !== expected_error)
                 `uvm_error("SCOREBOARD",$sformatf("Mismatch  FIFO_OUT EMPTY with slv_error=%0h expected=%0h",pkt.slv_err,expected_error));
@@ -260,13 +282,12 @@ function void alu_scoreboard::do_write(apb_transaction pkt);
         // PUSH INTO INPUT FIFO
         // -------------------------------
         else begin
-            fifo_in_count++;
-            data_in.op = operation ; 
-		    data_in.id_in = req_id;
-     		data_in.oper1 = reg1;
-		    data_in.oper2 = reg2;
-            fifo_in_queue.push_back(data_in);
-            ////////////////
+				fifo_in_count++;
+				data_in.op = operation ; 
+				data_in.id_in = req_id;
+				data_in.oper1 = reg1;
+				data_in.oper2 = reg2;
+				fifo_in_queue.push_back(data_in);
             monitoraki = fifo_in_count + fifo_out_count ; 
             `uvm_info("MONITORAKI", $sformatf(" count=%d", monitoraki), UVM_LOW)
             if(fifo_out_count == 4)
@@ -280,6 +301,9 @@ function void alu_scoreboard::do_write(apb_transaction pkt);
                 end
             end
         end
+        //------------------COVERAGE------------------------
+        cov.ctl_reg_cg.sample();
+        //-------------------------------------------------
     end
       // ---------------------------------------------------
       // INPUT REGISTERS addr 1&2
@@ -293,6 +317,10 @@ function void alu_scoreboard::do_write(apb_transaction pkt);
                  return;
                 end else begin
                 reg1 = pkt.data;
+                 //------COVERAGE----------------
+                cov.data0 = reg1;
+                cov.data0_reg_cg.sample();
+                //------------------------------
                 end
              end
       3'b010: begin 
@@ -304,6 +332,10 @@ function void alu_scoreboard::do_write(apb_transaction pkt);
                  return;
                 end else begin
                 reg2 = pkt.data;
+                //------COVERAGE----------------
+                cov.data1 = reg2;
+                cov.data1_reg_cg.sample();
+                //------------------------------
                 end
                end
       // ---------------------------------------------------
@@ -341,9 +373,12 @@ function void alu_scoreboard::do_read(apb_transaction pkt);
    // ---------------------------------------------------
    3'b011: begin
     //`uvm_info("MONITORAKI", $sformatf(" count=%d", fifo_in_count), UVM_LOW)
-     // wait until output FIFO has somethingE
+     // wait until output FIFO has something
      if(fifo_out_count <= 0)begin
       expected_error =1;
+      //-----------------COVERAGE-----------------------
+      cov.underflow =1 ;
+      //------------------------------------------------
       if (pkt.slv_err !== expected_error)
         `uvm_error("SCOREBOARD",$sformatf("Mismatch  FIFO_OUT EMPTY with slv_error=%0h expected=%0h",pkt.slv_err,expected_error));
        end
@@ -362,8 +397,12 @@ function void alu_scoreboard::do_read(apb_transaction pkt);
                `uvm_info("SCORE", $sformatf("size=%d", exp.id), UVM_LOW)
                fifo_out_count--;
                found_res = 1;
-               if(fifo_in_count !=0) 
+               if(fifo_in_count > 0) 
                 operation_make();
+               //--------------------COVERAGE--------------------------
+               cov.add_carry_out = pkt.data[16];
+               //------------------------------------------------------
+               
                break;
             end
          end
@@ -381,6 +420,9 @@ function void alu_scoreboard::do_read(apb_transaction pkt);
             $sformatf("Expected=0x%0h Actual=0x%0h",
                       exp_data, pkt.data))
     end
+    //------------------------------COVERAGE------------------------
+    cov.result_reg_cg.sample();
+    //--------------------------------------------------------------
 end
    // ---------------------------------------------------
    // MONITOR REGISTER (addr 4)
@@ -392,8 +434,12 @@ end
 	    exp_monitor[0] = (fifo_out_count == 0); // empty
       // `uvm_info("MONITORAKI",$sformatf("Expected count=%b", exp_monitor[0]),UVM_LOW)
       exp_monitor[1] = (fifo_out_count == 4); // full
-    
-    
+      //-----------------COVERAGE-----------------
+      cov.empty = pkt.data[0];
+      cov.full = pkt.data[1];
+      cov.monitor_reg_cg.sample();
+      //------------------------------------------
+      
     // ===== COMPARE MONITOR STATUS =====
       if (pkt.data[1:0] !== exp_monitor)
          `uvm_error("SB_MONITOR_MISMATCH",
@@ -417,9 +463,14 @@ end
       if (pkt.slv_err !== expected_error)
             `uvm_error("SCOREBOARD NOT USED ADDRESSES",$sformatf("Mismatch slv_error=%0h expected=%0h",pkt.slv_err,expected_error));
       end
+
    endcase 
-    
+
+	 
+// Send to coverage
+ 
 endfunction
+ 
 
 function void alu_scoreboard::write_rst_detected(bit reset_bit);
   `uvm_info("SCBD", $sformatf("MID LIFE ",), UVM_NONE)
@@ -434,13 +485,20 @@ function void alu_scoreboard::write_rst_detected(bit reset_bit);
      alu_add_busy = 0;
      alu_mul_busy = 0;
      expected_error = 0;
+     //------------------COVERAGE-------------------
+     cov.reset_detected = 1;
+    
+     //---------------------------------------------   
   end
-
+// Send to coverage
+   cov.reset_cg.sample();
+//alu_analysis_export.write(pkt);
  // cvg_obj.mid_rst_cg.sample();
 
 endfunction
 
-
+//alu_analysis_export.write(pkt);
+//rst_imp.write_rst_detected(reset_bit);
 
 
 `endif

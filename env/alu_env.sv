@@ -9,13 +9,13 @@ class alu_env extends uvm_env;
    fifo_virtual_sequencer fifo_vr_sqr; //Virtual Sequencer Instance
    env_config env_cfg;//Configuration Instance
    //virtual interfc vif; //Interface Instance
-   //alu_coverage alu_cov; //Coverage Instance
-    fifo_config fifo_cfg;      
+   
+   fifo_config fifo_cfg;      
    
    adapter m_adapter; //Adapter Instance
    reg_block   m_ral_model; //Register Block Instance
    uvm_reg_predictor#(apb_transaction)  m_apb_predictor;   //map apb tx to register in model
-
+   alu_coverage alu_cov; //Coverage Instance
 
     extern function new (string name="alu_env", uvm_component parent=null);
     extern virtual function void build_phase (uvm_phase phase);
@@ -42,19 +42,20 @@ function void alu_env:: build_phase(uvm_phase phase);
    fifo_cfg.is_active = UVM_ACTIVE;      // or env_cfg.is_active
 
 // --- Set the config for the agent (and children if needed)
-uvm_config_db#(fifo_config)::set(this, "alu_agnt*", "fifo_config", fifo_cfg);
+	uvm_config_db#(fifo_config)::set(this, "alu_agnt*", "fifo_config", fifo_cfg);
 	// Create and build register model
 	m_ral_model = reg_block::type_id::create("m_ral_model", this);
 	alu_agnt = alu_agent::type_id::create("alu_agnt", this);
-   alu_sboard = alu_scoreboard::type_id::create("alu_sboard", this);
+	alu_cov = new();
+	alu_sboard = alu_scoreboard::type_id::create("alu_sboard", this);
 	fifo_vr_sqr = fifo_virtual_sequencer::type_id::create("m_seqr",this);
-   m_apb_predictor = uvm_reg_predictor#(apb_transaction)::type_id::create("m_apb_predictor",  this);
-   m_ral_model.build();
-   m_ral_model.lock_model ();   //a register model has to be locked via invocation of its lock()      function in order to prevent any other testbench component or part from modifying the structure or adding registers to it.  
-   uvm_config_db #(reg_block):: set(null, "*", "m_ral_model", m_ral_model);
+	m_apb_predictor = uvm_reg_predictor#(apb_transaction)::type_id::create("m_apb_predictor",  this);
+	m_ral_model.build();
+	m_ral_model.lock_model ();   //a register model has to be locked via invocation of its lock()      function in order to prevent any other testbench component or part from modifying the structure or adding registers to it.  
+	uvm_config_db #(reg_block):: set(null, "*", "m_ral_model", m_ral_model);
 	m_adapter = adapter :: type_id :: create("m_adapter", this);
 
-   //alu_cov = alu_coverage::type_id::create("alu_cov", this);
+  
 	 
 endfunction : build_phase 
 
@@ -62,9 +63,11 @@ endfunction : build_phase
 function void alu_env:: connect_phase (uvm_phase phase);
     super.connect_phase(phase);
 
-/////Connect the monitors analysis port to the scoreboard
+/////Connect the monitors analysis port to the scoreboard & coverage
 	alu_agnt.monitor.ap_monitor.connect(alu_sboard.alu_analysis_export);
-    alu_agnt.monitor.reset_port.connect(alu_sboard.rst_imp);
+   alu_agnt.monitor.reset_port.connect(alu_sboard.rst_imp);
+  // alu_agnt.monitor.ap_monitor.connect(alu_cov.alu_analysis_export);
+ //  alu_agnt.monitor.reset_port.connect(alu_cov.rst_imp);
 
     m_ral_model.reg_map.set_sequencer(.sequencer(alu_agnt.sequencer), .adapter(m_adapter)); 
     m_ral_model.reg_map.set_base_addr(0); 
@@ -82,5 +85,12 @@ function void alu_env:: connect_phase (uvm_phase phase);
 
    //alu_sboard.cvg_obj = cvg_obj;
    m_ral_model.reg_map.set_auto_predict(0);
-
+  //
+ 
+ //connect virtual seq with agent seq
+  fifo_vr_sqr.apb_seqr = alu_agnt.sequencer ;
+   if (fifo_vr_sqr.apb_seqr == null)
+    `uvm_fatal("CONNECT", "fifo_vr_sqr.apb_seqr is NULL! Connection failed")
+  else
+    `uvm_info("CONNECT", "fifo_vr_sqr.apb_seqr connected OK", UVM_LOW)
 endfunction : connect_phase

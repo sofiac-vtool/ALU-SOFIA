@@ -11,14 +11,14 @@ package env_pkg;
 
   //  `include "alu_agent.sv"
 
-	 //`include "alu_coverage.sv"
+	
 	 `include "adapter.sv"
 	 `include "reg_block.sv"
 	 `include "fifo_virtual_sequencer.sv"
-     `include "alu_seq_lib.sv"
+	 `include "alu_seq_lib.sv"
 	 `include "alu_env_config.sv"
+	 `include "alu_coverage.sv"
 	 `include "alu_scoreboard.sv"
-	 
 	 `include "alu_env.sv"
 
 endpackage 

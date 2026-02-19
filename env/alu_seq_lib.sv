@@ -707,14 +707,14 @@ class error_invalid_write_address_sequence extends uvm_sequence#(apb_transaction
   // Randomize sequence-level variables
   if (!this.randomize())
     `uvm_fatal(get_name(), "Sequence randomization failed")
-
+ repeat (10) @(posedge  vintf.clk);
   // RAL writes
   m_ral_model.data0.write(status, reg1_val, .parent(this));
   `uvm_info("SEQ", $sformatf("Wrote DATA0 = %h", reg1_val), UVM_LOW)
-
+ repeat (10) @(posedge  vintf.clk);
   m_ral_model.data1.write(status, reg2_val, .parent(this));
   `uvm_info("SEQ", $sformatf("Wrote DATA1 = %h", reg2_val), UVM_LOW)
-
+ repeat (10) @(posedge  vintf.clk);
     req = apb_transaction::type_id::create("req");
     ///Deactivate address constraint  
 		req.c_addr.constraint_mode(0);
@@ -727,13 +727,13 @@ class error_invalid_write_address_sequence extends uvm_sequence#(apb_transaction
       `uvm_fatal(get_name(), "APB item randomization failed")
     start_item(req);
     finish_item(req);
-    get_response(rsp);
+   // get_response(rsp);
     `uvm_info(get_name(),
               $psprintf("Transaction sent:\n%s", req.sprint()),
               UVM_MEDIUM)
   end
   
-   repeat (33) @(posedge  vintf.clk);
+   repeat (40) @(posedge  vintf.clk);
          //READ MONITOR REGISTER
              m_ral_model.monitor.read(status, monitor);
             `uvm_info("SEQ", $sformatf("MONITOR STATUS = %h", monitor), UVM_MEDIUM) 
@@ -751,7 +751,7 @@ class error_invalid_read_address_sequence extends uvm_sequence#(apb_transaction)
    `uvm_object_utils(error_invalid_read_address_sequence)
    `uvm_declare_p_sequencer(fifo_sequencer)
 //Declare
-	virtual interfc vintf;
+   virtual interfc vintf;
    reg_block m_ral_model;
    uvm_status_e status;
 
@@ -819,7 +819,7 @@ class error_invalid_read_address_sequence extends uvm_sequence#(apb_transaction)
       `uvm_fatal(get_name(), "APB item randomization failed")
     start_item(req);
     finish_item(req);
-    get_response(rsp);
+    //get_response(rsp);
     `uvm_info(get_name(),
               $psprintf("Transaction sent:\n%s", req.sprint()),
               UVM_MEDIUM)
@@ -1144,7 +1144,7 @@ virtual task body();
 	      
 	    start_item(req);
 	    finish_item(req);
-	    get_response(rsp);
+	   // get_response(rsp);
 	    `uvm_info(get_name(),
 		      $psprintf("Transaction sent:\n%s", req.sprint()),
 		      UVM_MEDIUM)

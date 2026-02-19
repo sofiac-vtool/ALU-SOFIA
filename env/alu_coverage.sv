@@ -83,6 +83,7 @@ covergroup apb_transaction_cg;
     err_cross : cross wr_rd_cp, addr_cp, slv_err_cp
   //iff (slv_err == 1) 
   {
+  option.cross_auto_bin_max = 0;
   // -------------------------
   // WRITE error bins (5)
   // -------------------------
@@ -122,7 +123,8 @@ covergroup apb_transaction_cg;
   bins rd_err_7 =
     binsof(wr_rd_cp.rd) && binsof(addr_cp.inv7)&& binsof(slv_err_cp.err);
     
- ignore_bins ignore_ok =  binsof(wr_rd_cp) && binsof(addr_cp) && binsof(slv_err_cp.ok);
+// ignore_bins ignore_ok =  binsof(wr_rd_cp) && binsof(addr_cp) && binsof(slv_err_cp.ok);
+
 
 }
    endgroup : apb_transaction_cg

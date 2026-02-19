@@ -74,7 +74,7 @@ class alu_driver extends uvm_driver #(apb_transaction);
             read_data();
             `uvm_info(get_name(), "after read task", UVM_DEBUG)
          end
-         seq_item_port.item_done(data_obj);
+         seq_item_port.item_done();
          got_item = 0;
       end
       endtask //do_drive
